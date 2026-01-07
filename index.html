@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kavinkumar S | Cybersecurity Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cybersecurity portfolio of Kavinkumar S - Vulnerability Assessment and Penetration Tester." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-noise"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-full">
+        <span class="logo-name">
+          <span class="logo-name-main">KAVINKUMAR</span>
+          <span class="logo-name-initial accent">S</span>
+        </span>
+      </div>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <ul id="nav-links">
+          <li><a href="#hero">Overview</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tools">Tools &amp; Stack</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#writeups">Write-ups</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section hero" aria-label="Overview">
+      <div class="hero-content">
+        <p class="hero-overline">Security-focused Portfolio</p>
+        <h1 class="hero-title">
+          <span class="hero-name">
+            <span class="hero-name-main">KAVINKUMAR</span>
+            <span class="hero-name-initial">S</span>
+          </span>
+        </h1>
+        <p class="hero-role">Vulnerability Assessment &amp; Penetration <span class="accent">Tester</span></p>
+
+        <!-- Terminal-style animated sequence -->
+        <div class="hero-terminal" aria-live="polite">
+          <div class="terminal-line">
+            <span class="terminal-prefix">&gt; </span>
+            <span class="terminal-text" data-line-index="0"></span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prefix">&gt; </span>
+            <span class="terminal-text" data-line-index="1"></span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prefix">&gt; </span>
+            <span class="terminal-text" data-line-index="2"></span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prefix">&gt; </span>
+            <span class="terminal-text" data-line-index="3"></span>
+            <span class="terminal-cursor"></span>
+          </div>
+        </div>
+
+        <div class="hero-highlights">
+          <div class="highlight-pill observe" data-animate="fade-up">
+            <span class="dot"></span>
+            <span>Multi-domain VAPT experience</span>
+          </div>
+          <div class="highlight-pill observe" data-animate="fade-up" data-delay="0.06s">
+            <span class="dot"></span>
+            <span>Responsible disclosure driven</span>
+          </div>
+          <div class="highlight-pill observe" data-animate="fade-up" data-delay="0.12s">
+            <span class="dot"></span>
+            <span>Consultancy-grade reporting</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <button class="btn primary" data-scroll-to="#writeups">View Write-ups</button>
+          <button class="btn ghost" data-scroll-to="#methodology">Methodology</button>
+          <button class="btn ghost" data-scroll-to="#contact">Contact</button>
+        </div>
+      </div>
+
+      <!-- HERO PROFILE PHOTO -->
+      <div class="hero-visual observe" data-animate="fade-left">
+        <div class="profile-shell">
+          <div class="profile-glow"></div>
+          <img
+            src="C:\Users\KAVINKUMAR S\Downloads\kavin-portfolio\profile.png"
+            alt="Portrait of Kavinkumar S"
+            class="profile-photo"
+            loading="lazy"
+          />
+          <div class="profile-ring profile-ring-1"></div>
+        </div>
+        <div class="hero-badge">
+          <span class="badge-label">Offensive Security Perspective</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-label="About me">
+      <header class="section-header observe" data-animate="fade-up">
+        <h2>About <span class="accent">Me</span></h2>
+        <p>Focused on uncovering real-world weaknesses and translating them into clear, actionable guidance.</p>
+      </header>
+
+      <div class="cards-grid">
+        <!-- Profile -->
+        <article class="expand-card observe" data-animate="fade-up">
+          <button class="expand-header" aria-expanded="false">
+            <span>Profile</span>
+            <span class="expand-icon">+</span>
+          </button>
+          <div class="expand-body">
+            <p>
+              I’m a Vulnerability Assessment and Penetration Tester with hands-on experience across web applications, mobile applications, APIs, and network infrastructures. My focus is on identifying real-world security weaknesses, validating impact through controlled exploitation, and delivering clear, risk-focused remediation guidance.
+            </p>
+          </div>
+        </article>
+
+        <!-- Approach -->
+        <article class="expand-card observe" data-animate="fade-up" data-delay="0.08s">
+          <button class="expand-header" aria-expanded="false">
+            <span>Approach</span>
+            <span class="expand-icon">+</span>
+          </button>
+          <div class="expand-body">
+            <p>
+              Each engagement mirrors how an attacker would operate: understanding business logic, mapping attack paths, and chaining seemingly low-risk issues into meaningful attack chains.
+            </p>
+            <p>
+              Findings are communicated in a way that aligns engineering realities with security expectations.
+            </p>
+          </div>
+        </article>
+
+        <!-- Focus Areas -->
+        <article class="expand-card observe" data-animate="fade-up" data-delay="0.16s">
+          <button class="expand-header" aria-expanded="false">
+            <span>Focus Areas</span>
+            <span class="expand-icon">+</span>
+          </button>
+          <div class="expand-body">
+            <ul>
+              <li>Web Application Security</li>
+              <li>Mobile Application Security</li>
+              <li>API Security</li>
+              <li>Network Security (Internal &amp; External)</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TOOLS & TECHNICAL STACK -->
+    <section id="tools" class="section" aria-label="Tools and technical stack">
+      <header class="section-header observe" data-animate="fade-up">
+        <h2>Tools &amp; <span class="accent">Technical Stack</span></h2>
+        <p>Tooling aligned to each testing domain for coverage, speed, and depth.</p>
+      </header>
+
+      <div class="skills-filters" role="tablist" aria-label="Tool filters">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+        <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile</button>
+        <button class="filter-btn" data-filter="api" role="tab" aria-selected="false">API</button>
+        <button class="filter-btn" data-filter="network" role="tab" aria-selected="false">Network</button>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Web Application Security Tools -->
+        <article class="skill-card observe" data-animate="fade-up" data-scope="web">
+          <div class="skill-icon">🌐</div>
+          <h3>Web Application Security Tools</h3>
+          <p>Tooling focused on mapping, fuzzing, and exploiting modern web applications.</p>
+          <ul class="tool-list">
+            <li><strong>Burp Suite</strong> – Intercepting proxy for manual testing, traffic rewriting, and automation.</li>
+            <li><strong>OWASP ZAP</strong> – Open-source scanner for crawling and active scanning web assets.</li>
+            <li><strong>ffuf</strong> – Fast directory and parameter fuzzing to uncover hidden endpoints.</li>
+            <li><strong>gobuster</strong> – Wordlist-based discovery of directories, files, and virtual hosts.</li>
+            <li><strong>sqlmap</strong> – Automated detection and exploitation of SQL injection vulnerabilities.</li>
+            <li><strong>ghauri</strong> – Advanced SQL injection tool with enhanced detection capabilities.</li>
+            <li><strong>nuclei</strong> – Template-based scanner for fast checks against common misconfigurations.</li>
+            <li><strong>nikto</strong> – Web server scanner for outdated software, default files, and risky options.</li>
+            <li><strong>custom wordlists</strong> – Tailored dictionaries built from application context and OSINT.</li>
+          </ul>
+        </article>
+
+        <!-- API Security Tools -->
+        <article class="skill-card observe" data-animate="fade-up" data-delay="0.05s" data-scope="api">
+          <div class="skill-icon">🔗</div>
+          <h3>API Security Tools</h3>
+          <p>Focused on REST and JSON-based APIs, including authentication and schema edge cases.</p>
+          <ul class="tool-list">
+            <li><strong>Postman</strong> – Collection-driven API exploration, fuzzing, and workflow testing.</li>
+            <li><strong>Burp Suite (API testing)</strong> – Proxy and repeater for tampering with API requests in real time.</li>
+            <li><strong>nuclei (API templates)</strong> – Targeted checks for API-specific weaknesses and misconfigurations.</li>
+            <li><strong>Swagger / OpenAPI</strong> – Specification-driven mapping of endpoints and parameters.</li>
+            <li><strong>Insomnia</strong> – Lightweight API client for crafting and replaying complex requests.</li>
+            <li><strong>JWT Toolkit</strong> – Utilities for tampering with JSON Web Tokens and validating implementations.</li>
+          </ul>
+        </article>
+
+        <!-- Mobile Application Security Tools -->
+        <article class="skill-card observe" data-animate="fade-up" data-delay="0.1s" data-scope="mobile">
+          <div class="skill-icon">📱</div>
+          <h3>Mobile Application Security Tools</h3>
+          <p>Static and dynamic analysis of Android applications and their communication channels.</p>
+          <ul class="tool-list">
+            <li><strong>MobSF</strong> – Automated static and dynamic analysis of Android application packages.</li>
+            <li><strong>Frida</strong> – Dynamic instrumentation framework for runtime hooking and inspection.</li>
+            <li><strong>Objection</strong> – Runtime mobile exploration framework built on top of Frida.</li>
+            <li><strong>JADX</strong> – Decompiler for reviewing Android bytecode as readable Java/Kotlin.</li>
+            <li><strong>APKTool</strong> – Decompilation and rebuilding of APK resources for deeper inspection.</li>
+            <li><strong>Drozer</strong> – Android security assessment framework for exposed components.</li>
+            <li><strong>Android Studio Emulator</strong> – Controlled environment for dynamic testing and debugging.</li>
+          </ul>
+        </article>
+
+        <!-- Network Security Tools -->
+        <article class="skill-card observe" data-animate="fade-up" data-delay="0.15s" data-scope="network">
+          <div class="skill-icon">🛰</div>
+          <h3>Network Security Tools</h3>
+          <p>Discovery, enumeration, and exploitation across internal and external network surfaces.</p>
+          <ul class="tool-list">
+            <li><strong>Nmap</strong> – Network mapping and service fingerprinting with scriptable checks.</li>
+            <li><strong>Nessus</strong> – Vulnerability scanner for configuration and patch-related exposures.</li>
+            <li><strong>Netcat</strong> – Versatile utility for banner grabbing, tunneling, and simple listeners.</li>
+            <li><strong>Wireshark</strong> – Protocol analyzer for capturing and decoding network traffic.</li>
+            <li><strong>Masscan</strong> – High-speed port scanner for wide-range reconnaissance.</li>
+            <li><strong>Enum4linux</strong> – SMB and Windows enumeration against domain and workgroup hosts.</li>
+            <li><strong>CrackMapExec</strong> – Post-exploitation Swiss army knife for Active Directory environments.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section id="methodology" class="section" aria-label="Testing methodology">
+      <header class="section-header observe" data-animate="fade-up">
+        <h2>Testing <span class="accent">Methodology</span></h2>
+        <p>Structured, repeatable process aligned with real-world adversary techniques.</p>
+      </header>
+
+      <ol class="timeline">
+        <li class="timeline-item observe" data-animate="fade-up">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">01</span>
+            <span class="timeline-title">Scope Understanding &amp; Target Mapping</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Clarify objectives, in-scope assets, constraints, and success criteria, then map systems and trust boundaries.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.05s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">02</span>
+            <span class="timeline-title">Reconnaissance &amp; Enumeration</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Gather OSINT, fingerprint technologies, and enumerate services, endpoints, and exposed interfaces.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.1s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">03</span>
+            <span class="timeline-title">Threat Modeling &amp; Attack Surface Analysis</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Identify high-value assets and plausible abuse paths to prioritize depth of testing.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.15s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">04</span>
+            <span class="timeline-title">Manual &amp; Automated Testing</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Combine targeted manual testing with curated tooling for broad and deep coverage.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.2s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">05</span>
+            <span class="timeline-title">Exploitation &amp; Impact Validation</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Safely exploit issues to prove impact while protecting availability and data integrity.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.25s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">06</span>
+            <span class="timeline-title">Risk Assessment (CVSS)</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Score findings with CVSS and business context so teams can prioritize remediation.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.3s">
+          <button class="timeline-header" aria-expanded="false">
+            <span class="timeline-step">07</span>
+            <span class="timeline-title">Reporting &amp; Remediation Guidance</span>
+            <span class="timeline-toggle">+</span>
+          </button>
+          <div class="timeline-body">
+            <p>Deliver structured reports with clear reproduction steps, impact, and pragmatic fixes.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WRITE-UPS -->
+    <section id="writeups" class="section" aria-label="Write-ups and recognitions">
+      <header class="section-header observe" data-animate="fade-up">
+        <h2>Write-ups &amp; <span class="accent">Recognitions</span></h2>
+        <p>Selected disclosures and research focused on measurable security improvements.</p>
+      </header>
+
+      <div class="cards-grid">
+        <article class="info-card observe" data-animate="fade-up">
+          <h3>Global Domain Service Provider</h3>
+          <p>Responsible vulnerability disclosure with bounty acknowledgment for impactful findings.</p>
+          <button class="btn small outline modal-open" data-modal="modal-domain">View details</button>
+        </article>
+
+        <article class="info-card observe" data-animate="fade-up" data-delay="0.05s">
+          <h3>Digital Book Platform</h3>
+          <p>Security issues in digital content distribution leading to stronger access controls.</p>
+          <button class="btn small outline modal-open" data-modal="modal-books">View details</button>
+        </article>
+
+        <article class="info-card observe" data-animate="fade-up" data-delay="0.1s">
+          <h3>U.S. Government Labor Organization</h3>
+          <p>Responsible disclosure leading to hardened public-facing services.</p>
+          <button class="btn small outline modal-open" data-modal="modal-labor">View details</button>
+        </article>
+
+        <article class="info-card observe" data-animate="fade-up" data-delay="0.15s">
+          <h3>Hacking the Fare</h3>
+          <p>Business logic attack chain used to manipulate ticket pricing safely.</p>
+          <button class="btn small primary modal-open" data-modal="modal-fare">Read overview</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-label="Contact and disclosure">
+      <header class="section-header observe" data-animate="fade-up">
+        <h2>Contact &amp; <span class="accent">Disclosure</span></h2>
+        <p>Ethical, coordinated engagement focused on improving security posture.</p>
+      </header>
+
+      <div class="contact-layout">
+        <form class="contact-form observe" data-animate="fade-right" id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="from_name" type="text" autocomplete="name" required />
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="reply_to" type="email" autocomplete="email" required />
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <button type="submit" class="btn primary full-width">Send Message</button>
+          <p class="form-status" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-info observe" data-animate="fade-left">
+          <div class="contact-block">
+            <h3>Direct Channels</h3>
+
+            <button class="copy-btn" data-copy="kavinkumarkumar758@gmail.com">
+              <span>Email: <span>kavinkumarkumar758@gmail.com</span></span>
+              <span class="copy-status" aria-hidden="true">Copy</span>
+            </button>
+
+            <a class="contact-chip" href="tel:+916374943589">
+              <span class="chip-label">Call</span>
+              <span class="chip-value">+91&nbsp;63749&nbsp;43589</span>
+            </a>
+
+            <a
+              class="contact-chip"
+              href="https://www.linkedin.com/in/kavinkumar-s758"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="chip-label">LinkedIn</span>
+              <span class="chip-value">/in/kavinkumar-s758</span>
+            </a>
+          </div>
+
+          <div class="contact-block">
+            <h3>Responsible Disclosure</h3>
+            <p>
+              All security testing is performed ethically and under appropriate authorization, following coordinated disclosure practices.
+            </p>
+            <p>
+              Production systems are tested using controlled techniques that minimize impact on availability, data, and users.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Kavinkumar S. All rights reserved.</p>
+  </footer>
+
+  <div class="modal-backdrop" data-modal-backdrop hidden></div>
+
+  <!-- Modals -->
+  <section class="modal" id="modal-domain" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-domain-title">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modal-domain-title">Global Domain Service Provider</h3>
+      <p>
+        Engagement focused on securing account management and domain configuration flows that could otherwise support unauthorized changes and domain hijacking.
+      </p>
+      <p>
+        Issues were reported via responsible disclosure, validated by the provider, and remediated with bounty acknowledgement.
+      </p>
+    </div>
+  </section>
+
+  <section class="modal" id="modal-books" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-books-title">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modal-books-title">Digital Book Distribution Platform</h3>
+      <p>
+        Identified weaknesses in entitlement checks and authorization controls that could have allowed unauthorized access to digital content.
+      </p>
+      <p>
+        Coordinated remediation helped strengthen access control logic and auditability, with digital recognition from the platform.
+      </p>
+    </div>
+  </section>
+
+  <section class="modal" id="modal-labor" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-labor-title">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modal-labor-title">U.S. Government Labor Organization</h3>
+      <p>
+        Reported misconfigurations impacting public-facing systems, including exposure that could support phishing and information leakage.
+      </p>
+      <p>
+        The organization acknowledged the disclosure and implemented configuration and monitoring improvements.
+      </p>
+    </div>
+  </section>
+
+  <section class="modal" id="modal-fare" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-fare-title">
+    <div class="modal-inner">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modal-fare-title">Hacking the Fare: Business Logic Abuse</h3>
+      <p>
+        Demonstrated how flaws in fare calculation and discount validation allowed manipulation of pricing parameters to obtain tickets at reduced cost.
+      </p>
+      <p>
+        The work highlighted why process controls and reconciliation are as important as code-level fixes when defending against business logic attacks.
+      </p>
+    </div>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
