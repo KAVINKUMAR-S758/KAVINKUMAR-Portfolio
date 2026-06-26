@@ -1,509 +1,1580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kavinkumar S | Cybersecurity Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cybersecurity portfolio of Kavinkumar S - Vulnerability Assessment and Penetration Tester." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<meta charset="UTF-8" />
+<title>Kavinkumar S | Security Engineer & VAPT Specialist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kavinkumar S — Security Engineer at Cycatz. VAPT specialist across web, mobile, API, and network domains." />
+<meta property="og:title" content="Kavinkumar S | Security Engineer" />
+<meta property="og:description" content="Security Engineer & VAPT specialist — web, mobile, API, and network security." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+/* ─────────────────────────────────────────────
+   RESET & TOKENS
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080D1A;
+  --bg-card:     #0D1B2E;
+  --bg-card2:    #112033;
+  --border:      rgba(0,212,255,0.1);
+  --border-hover:rgba(0,212,255,0.32);
+  --accent:      #00D4FF;
+  --accent-dim:  rgba(0,212,255,0.1);
+  --accent-glow: rgba(0,212,255,0.3);
+  --text:        #E0EAF4;
+  --text-muted:  #4D6680;
+  --text-mid:    #7EA8C4;
+  --yellow:      #F5C842;
+  --yellow-dim:  rgba(245,200,66,0.12);
+  --red:         #FF4D6A;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Source Code Pro', monospace;
+
+  --radius:    10px;
+  --radius-lg: 16px;
+  --section-gap: 7rem;
+  --nav-h: 64px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: #04111E; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ─────────────────────────────────────────────
+   AMBIENT BACKGROUND
+───────────────────────────────────────────── */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+}
+.bg-canvas::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+  top: -200px; right: -200px;
+  border-radius: 50%;
+  animation: float-orb 12s ease-in-out infinite alternate;
+}
+.bg-canvas::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,120,255,0.05) 0%, transparent 70%);
+  bottom: 10%; left: -150px;
+  border-radius: 50%;
+  animation: float-orb 16s ease-in-out infinite alternate-reverse;
+}
+@keyframes float-orb {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.08); }
+}
+
+/* Grid lines */
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  background: rgba(8,12,20,0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 1200px; margin: 0 auto;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+}
+.logo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.logo span { color: var(--accent); }
+
+.main-nav ul {
+  display: flex; gap: 0.25rem; list-style: none;
+}
+.main-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.main-nav a:hover { color: var(--accent); background: var(--accent-dim); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle-line {
+  display: block; width: 22px; height: 2px;
+  background: var(--text-muted); border-radius: 2px;
+  transition: background 0.2s;
+}
+.nav-toggle:hover .nav-toggle-line { background: var(--accent); }
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+main { position: relative; z-index: 1; }
+
+.section {
+  max-width: 1200px; margin: 0 auto;
+  padding: var(--section-gap) 2rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-label::before {
+  content: '~/';
+  opacity: 0.5;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-title .accent { color: var(--accent); }
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.75;
+}
+.section-header { margin-bottom: 3rem; }
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4rem;
+  padding-top: calc(var(--nav-h) + 3rem);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.hero-eyebrow::before { content: '[+]'; opacity: 0.5; }
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.hero-name .accent { color: var(--accent); }
+
+.hero-role {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 1.25rem;
+}
+
+/* Live role badge */
+.live-badge {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%      { opacity: 0.5; box-shadow: 0 0 0 4px transparent; }
+}
+
+/* Terminal */
+.hero-terminal {
+  background: rgba(13,22,37,0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 2;
+  margin-bottom: 2rem;
+  max-width: 520px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-terminal::before {
+  content: '● ● ●';
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  opacity: 0.6;
+}
+.t-line { color: var(--text-muted); }
+.t-line .t-prefix { color: var(--accent); margin-right: 0.5rem; }
+.t-line .t-text  { color: var(--text); }
+.t-cursor {
+  display: inline-block; width: 8px; height: 14px;
+  background: var(--accent); vertical-align: middle;
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* Highlights */
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+/* CTAs */
+.hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.btn {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius);
+  border: none; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--accent); color: #04111E;
+}
+.btn-primary:hover { background: #00bce0; box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--text-mid);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+/* ── PROFILE (round, glowing) ── */
+.hero-profile {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0;
+}
+.profile-shell {
+  position: relative;
+  width: 260px; height: 260px;
+}
+.profile-photo-wrap {
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(0,212,255,0.3);
+  box-shadow: 0 0 0 6px rgba(0,212,255,0.06), 0 0 50px rgba(0,212,255,0.14);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+  cursor: default;
+}
+.profile-photo-wrap:hover {
+  border-color: rgba(0,212,255,0.75);
+  box-shadow: 0 0 0 8px rgba(0,212,255,0.1), 0 0 80px rgba(0,212,255,0.38), 0 0 140px rgba(0,212,255,0.14);
+  transform: scale(1.04);
+}
+.profile-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+  filter: brightness(0.92) saturate(1.05);
+  transition: filter 0.4s ease;
+}
+.profile-photo-wrap:hover img {
+  filter: brightness(1.08) saturate(1.2);
+}
+/* Spinning ring */
+.profile-ring {
+  position: absolute; inset: -10px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0,212,255,0.18);
+  animation: spin-ring 18s linear infinite;
+  pointer-events: none;
+}
+.profile-ring::after {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  width: 6px; height: 6px; margin-left: -3px; margin-top: -3px;
+  background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+@keyframes spin-ring { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start;
+}
+.about-body p { color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem; }
+.about-body p strong { color: var(--text); font-weight: 600; }
+
+.focus-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.focus-list li {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.88rem; color: var(--text-mid);
+  padding: 0.65rem 1rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, color 0.2s;
+}
+.focus-list li:hover { border-color: var(--border-hover); color: var(--text); }
+.focus-list li::before {
+  content: '>';
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--accent); font-weight: 700; flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   EDUCATION
+───────────────────────────────────────────── */
+.edu-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.25rem;
+  max-width: 700px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.edu-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 30px rgba(0,212,255,0.06);
+}
+.edu-institution {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.6rem;
+}
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--text); line-height: 1.3; margin-bottom: 0.35rem;
+}
+.edu-meta {
+  font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.1rem;
+}
+.award-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: var(--yellow-dim);
+  border: 1px solid rgba(255,209,102,0.22);
+  color: var(--yellow);
+}
+
+/* ─────────────────────────────────────────────
+   CERTIFICATIONS
+───────────────────────────────────────────── */
+.cert-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.cert-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at top left, rgba(0,212,255,0.05), transparent 60%);
+  pointer-events: none;
+}
+.cert-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(0,212,255,0.08);
+}
+.cert-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.cert-tag::before { content: '['; opacity: 0.4; }
+.cert-tag::after  { content: ']'; opacity: 0.4; }
+.cert-name {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700;
+  color: var(--text); line-height: 1.35; margin-bottom: 0.35rem;
+}
+.cert-issuer { font-size: 0.78rem; color: var(--text-muted); }
+.cert-shield {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  font-size: 1.8rem; opacity: 0.15;
+}
+
+/* ─────────────────────────────────────────────
+   TOOLS
+───────────────────────────────────────────── */
+.tools-filters {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer; transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--accent); color: var(--accent); background: var(--accent-dim);
+}
+
+.tools-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.tool-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 30px rgba(0,212,255,0.05); }
+.tool-card-header {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+}
+.tool-icon {
+  width: 38px; height: 38px;
+  background: var(--accent-dim); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.tool-card-title { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.tool-card-sub   { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+.tool-items { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+.tool-tag {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  color: var(--text-muted);
+  transition: color 0.2s, border-color 0.2s;
+}
+.tool-card:hover .tool-tag { border-color: rgba(0,212,255,0.14); color: var(--text-mid); }
+
+/* ─────────────────────────────────────────────
+   METHODOLOGY
+───────────────────────────────────────────── */
+.methodology-list {
+  display: flex; flex-direction: column; gap: 0;
+  border-left: 1px solid var(--border);
+  padding-left: 0;
+  margin-left: 1.5rem;
+  list-style: none;
+}
+.method-item {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 2rem;
+  cursor: pointer;
+}
+.method-item::before {
+  content: '';
+  position: absolute; left: -5px; top: 1.85rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--text-muted);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.method-item:hover::before,
+.method-item.open::before {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.method-header {
+  display: flex; align-items: center; gap: 1rem;
+  background: none; border: none; text-align: left;
+  cursor: pointer; width: 100%; padding: 0;
+}
+.method-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; font-weight: 600;
+  color: var(--accent); opacity: 0.6;
+  letter-spacing: 0.06em; flex-shrink: 0;
+}
+.method-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text); flex: 1;
+}
+.method-toggle {
+  font-family: var(--font-mono);
+  color: var(--text-muted); font-size: 1rem;
+  transition: transform 0.2s, color 0.2s; flex-shrink: 0;
+}
+.method-item.open .method-toggle { transform: rotate(45deg); color: var(--accent); }
+.method-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 0;
+}
+.method-item.open .method-body { max-height: 120px; }
+.method-body p {
+  font-size: 0.85rem; color: var(--text-muted);
+  padding-top: 0.75rem; line-height: 1.75;
+}
+
+/* ─────────────────────────────────────────────
+   WRITE-UPS
+───────────────────────────────────────────── */
+.writeups-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.writeup-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  position: relative; overflow: hidden;
+}
+.writeup-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.writeup-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+.writeup-card:hover::before { transform: scaleX(1); }
+.writeup-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+}
+.writeup-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700; color: var(--text); line-height: 1.3;
+}
+.writeup-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+.writeup-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent);
+  background: none; border: 1px solid var(--border);
+  padding: 0.4rem 0.85rem; border-radius: 6px;
+  cursor: pointer; width: fit-content;
+  transition: border-color 0.2s, background 0.2s;
+}
+.writeup-btn:hover { border-color: var(--accent); background: var(--accent-dim); }
+
+/* ─────────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────────── */
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+}
+
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.4rem;
+}
+.field input, .field textarea {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--font-body); font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+.field input:focus, .field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+}
+.field-error { font-size: 0.72rem; color: var(--red); display: block; margin-top: 0.3rem; min-height: 1em; }
+.btn-submit {
+  font-family: var(--font-display);
+  font-size: 0.85rem; font-weight: 700;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius);
+  border: none; cursor: pointer;
+  background: var(--accent); color: #04111E;
+  transition: all 0.2s; width: 100%;
+}
+.btn-submit:hover { background: #00bce0; box-shadow: 0 0 24px var(--accent-glow); }
+.form-status { font-size: 0.8rem; color: var(--accent); min-height: 1.4em; text-align: center; }
+
+/* Contact info */
+.contact-info { display: flex; flex-direction: column; gap: 1.75rem; }
+.contact-block h3 {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.9rem;
+}
+.channel-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.channel-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); text-decoration: none;
+  transition: border-color 0.2s;
+}
+.channel-link:hover { border-color: var(--border-hover); }
+.channel-icon {
+  width: 32px; height: 32px;
+  background: var(--accent-dim); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.channel-meta { flex: 1; }
+.channel-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.channel-value { font-size: 0.82rem; color: var(--text); font-weight: 500; }
+
+.copy-btn {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); cursor: pointer;
+  width: 100%; text-align: left;
+  transition: border-color 0.2s;
+}
+.copy-btn:hover { border-color: var(--border-hover); }
+.copy-icon {
+  width: 32px; height: 32px;
+  background: var(--accent-dim); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.copy-meta { flex: 1; }
+.copy-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.copy-value { font-size: 0.82rem; color: var(--text); font-weight: 500; }
+.copy-action {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); opacity: 0.7; flex-shrink: 0;
+}
+
+.disclosure-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--text-muted);
+  position: relative; z-index: 1;
+}
+footer span { color: var(--accent); }
+
+/* ─────────────────────────────────────────────
+   MODALS
+───────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  position: fixed; z-index: 201;
+  top: 50%; left: 50%; transform: translate(-50%, -48%);
+  width: 90%; max-width: 520px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%, -50%);
+}
+.modal-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 1.25rem; gap: 1rem;
+}
+.modal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.4rem;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700; color: var(--text);
+}
+.modal-close {
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+  color: var(--text-muted); width: 32px; height: 32px; border-radius: 7px;
+  font-size: 1rem; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+}
+.modal-close:hover { color: var(--text); border-color: var(--border-hover); }
+.modal-body p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+
+/* ─────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────── */
+.observe {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.observe.visible { opacity: 1; transform: none; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+  .hero-profile { margin: 0 auto; }
+  .hero-pills, .hero-ctas, .hero-terminal { margin-left: auto; margin-right: auto; }
+  .hero-pills { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+  .about-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .main-nav ul { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(8,12,20,0.97); border-bottom: 1px solid var(--border); padding: 1rem; gap: 0.25rem; }
+  .main-nav ul.open { display: flex; }
+  .nav-toggle { display: flex; }
+}
+
+@media (max-width: 600px) {
+  :root { --section-gap: 4rem; }
+  .hero-name { font-size: 2.5rem; }
+  .profile-shell { width: 220px; height: 220px; }
+  .profile-photo-wrap { width: 220px; height: 220px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, .observe { transition: none !important; animation: none !important; }
+}
+</style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-noise"></div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="logo-full">
-        <span class="logo-name">
-          <span class="logo-name-main">KAVINKUMAR</span>
-          <span class="logo-name-initial accent">S</span>
-        </span>
-      </div>
+<div class="bg-canvas"></div>
+<div class="bg-grid"></div>
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
-          <span class="nav-toggle-line"></span>
-          <span class="nav-toggle-line"></span>
-        </button>
-        <ul id="nav-links">
-          <li><a href="#hero">Overview</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#tools">Tools &amp; Stack</a></li>
-          <li><a href="#methodology">Methodology</a></li>
-          <li><a href="#writeups">Write-ups</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<!-- NAV -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#hero">kavin<span>@</span>sec<span>:~$</span></a>
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#methodology">Method</a></li>
+        <li><a href="#writeups">Write-ups</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ───── HERO ───── -->
+<section id="hero" class="section hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Security Engineer &amp; VAPT Specialist</p>
+    <h1 class="hero-name">KAVINKUMAR<br><span class="accent">S</span></h1>
+    <p class="hero-role">Vulnerability Assessment &amp; Penetration Testing</p>
+
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      Security Engineer · Cycatz
     </div>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="section hero" aria-label="Overview">
-      <div class="hero-content">
-        <p class="hero-overline">Security-focused Portfolio</p>
-        <h1 class="hero-title">
-          <span class="hero-name">
-            <span class="hero-name-main">KAVINKUMAR</span>
-            <span class="hero-name-initial">S</span>
-          </span>
-        </h1>
-        <p class="hero-role">Vulnerability Assessment &amp; Penetration <span class="accent">Tester</span></p>
+    <div class="hero-terminal">
+      <div class="t-line"><span class="t-prefix">$</span><span class="t-text" id="tl0"></span></div>
+      <div class="t-line"><span class="t-prefix">$</span><span class="t-text" id="tl1"></span></div>
+      <div class="t-line"><span class="t-prefix">$</span><span class="t-text" id="tl2"></span></div>
+      <div class="t-line"><span class="t-prefix">$</span><span class="t-text" id="tl3"></span><span class="t-cursor"></span></div>
+    </div>
 
-        <!-- Terminal-style animated sequence -->
-        <div class="hero-terminal" aria-live="polite">
-          <div class="terminal-line">
-            <span class="terminal-prefix">&gt; </span>
-            <span class="terminal-text" data-line-index="0"></span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prefix">&gt; </span>
-            <span class="terminal-text" data-line-index="1"></span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prefix">&gt; </span>
-            <span class="terminal-text" data-line-index="2"></span>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prefix">&gt; </span>
-            <span class="terminal-text" data-line-index="3"></span>
-            <span class="terminal-cursor"></span>
-          </div>
-        </div>
+    <div class="hero-pills">
+      <span class="pill"><span class="pill-dot"></span>Web &amp; API Pentesting</span>
+      <span class="pill"><span class="pill-dot"></span>Android Security</span>
+      <span class="pill"><span class="pill-dot"></span>Network VAPT</span>
+      <span class="pill"><span class="pill-dot"></span>Responsible Disclosure</span>
+    </div>
 
-        <div class="hero-highlights">
-          <div class="highlight-pill observe" data-animate="fade-up">
-            <span class="dot"></span>
-            <span>Multi-domain VAPT experience</span>
-          </div>
-          <div class="highlight-pill observe" data-animate="fade-up" data-delay="0.06s">
-            <span class="dot"></span>
-            <span>Responsible disclosure driven</span>
-          </div>
-          <div class="highlight-pill observe" data-animate="fade-up" data-delay="0.12s">
-            <span class="dot"></span>
-            <span>Consultancy-grade reporting</span>
-          </div>
-        </div>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="document.querySelector('#writeups').scrollIntoView({behavior:'smooth'})">View Write-ups</button>
+      <button class="btn btn-ghost" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+      <a class="btn btn-ghost" href="https://github.com/KAVINKUMAR-S758" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </div>
 
-        <div class="hero-ctas">
-          <button class="btn primary" data-scroll-to="#writeups">View Write-ups</button>
-          <button class="btn ghost" data-scroll-to="#methodology">Methodology</button>
-          <button class="btn ghost" data-scroll-to="#contact">Contact</button>
-        </div>
+  <!-- Profile card -->
+  <div class="hero-profile">
+    <div class="profile-shell">
+      <div class="profile-ring"></div>
+      <div class="profile-photo-wrap">
+        <img src="profile.png" alt="Kavinkumar S" />
       </div>
+    </div>
 
-      <!-- HERO PROFILE PHOTO -->
-      <div class="hero-visual observe" data-animate="fade-left">
-        <div class="profile-shell">
-          <div class="profile-glow"></div>
-          <img
-            src="profile.png"
-            alt="Portrait of Kavinkumar S"
-            class="profile-photo"
-            loading="lazy"
-          />
-          <div class="profile-ring profile-ring-1"></div>
-        </div>
-        <div class="hero-badge">
-          <span class="badge-label">Offensive Security Perspective</span>
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section" aria-label="About me">
-      <header class="section-header observe" data-animate="fade-up">
-        <h2>About <span class="accent">Me</span></h2>
-        <p>Focused on uncovering real-world weaknesses and translating them into clear, actionable guidance.</p>
-      </header>
-
-      <div class="cards-grid">
-        <!-- Profile -->
-        <article class="expand-card observe" data-animate="fade-up">
-          <button class="expand-header" aria-expanded="false">
-            <span>Profile</span>
-            <span class="expand-icon">+</span>
-          </button>
-          <div class="expand-body">
-            <p>
-              I’m a Vulnerability Assessment and Penetration Tester with hands-on experience across web applications, mobile applications, APIs, and network infrastructures. My focus is on identifying real-world security weaknesses, validating impact through controlled exploitation, and delivering clear, risk-focused remediation guidance.
-            </p>
-          </div>
-        </article>
-
-        <!-- Approach -->
-        <article class="expand-card observe" data-animate="fade-up" data-delay="0.08s">
-          <button class="expand-header" aria-expanded="false">
-            <span>Approach</span>
-            <span class="expand-icon">+</span>
-          </button>
-          <div class="expand-body">
-            <p>
-              Each engagement mirrors how an attacker would operate: understanding business logic, mapping attack paths, and chaining seemingly low-risk issues into meaningful attack chains.
-            </p>
-            <p>
-              Findings are communicated in a way that aligns engineering realities with security expectations.
-            </p>
-          </div>
-        </article>
-
-        <!-- Focus Areas -->
-        <article class="expand-card observe" data-animate="fade-up" data-delay="0.16s">
-          <button class="expand-header" aria-expanded="false">
-            <span>Focus Areas</span>
-            <span class="expand-icon">+</span>
-          </button>
-          <div class="expand-body">
-            <ul>
-              <li>Web Application Security</li>
-              <li>Mobile Application Security</li>
-              <li>API Security</li>
-              <li>Network Security (Internal &amp; External)</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- TOOLS & TECHNICAL STACK -->
-    <section id="tools" class="section" aria-label="Tools and technical stack">
-      <header class="section-header observe" data-animate="fade-up">
-        <h2>Tools &amp; <span class="accent">Technical Stack</span></h2>
-        <p>Tooling aligned to each testing domain for coverage, speed, and depth.</p>
-      </header>
-
-      <div class="skills-filters" role="tablist" aria-label="Tool filters">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
-        <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile</button>
-        <button class="filter-btn" data-filter="api" role="tab" aria-selected="false">API</button>
-        <button class="filter-btn" data-filter="network" role="tab" aria-selected="false">Network</button>
-      </div>
-
-      <div class="skills-grid">
-        <!-- Web Application Security Tools -->
-        <article class="skill-card observe" data-animate="fade-up" data-scope="web">
-          <div class="skill-icon">🌐</div>
-          <h3>Web Application Security Tools</h3>
-          <p>Tooling focused on mapping, fuzzing, and exploiting modern web applications.</p>
-          <ul class="tool-list">
-            <li><strong>Burp Suite</strong> – Intercepting proxy for manual testing, traffic rewriting, and automation.</li>
-            <li><strong>OWASP ZAP</strong> – Open-source scanner for crawling and active scanning web assets.</li>
-            <li><strong>ffuf</strong> – Fast directory and parameter fuzzing to uncover hidden endpoints.</li>
-            <li><strong>gobuster</strong> – Wordlist-based discovery of directories, files, and virtual hosts.</li>
-            <li><strong>sqlmap</strong> – Automated detection and exploitation of SQL injection vulnerabilities.</li>
-            <li><strong>ghauri</strong> – Advanced SQL injection tool with enhanced detection capabilities.</li>
-            <li><strong>nuclei</strong> – Template-based scanner for fast checks against common misconfigurations.</li>
-            <li><strong>nikto</strong> – Web server scanner for outdated software, default files, and risky options.</li>
-            <li><strong>custom wordlists</strong> – Tailored dictionaries built from application context and OSINT.</li>
-          </ul>
-        </article>
-
-        <!-- API Security Tools -->
-        <article class="skill-card observe" data-animate="fade-up" data-delay="0.05s" data-scope="api">
-          <div class="skill-icon">🔗</div>
-          <h3>API Security Tools</h3>
-          <p>Focused on REST and JSON-based APIs, including authentication and schema edge cases.</p>
-          <ul class="tool-list">
-            <li><strong>Postman</strong> – Collection-driven API exploration, fuzzing, and workflow testing.</li>
-            <li><strong>Burp Suite (API testing)</strong> – Proxy and repeater for tampering with API requests in real time.</li>
-            <li><strong>nuclei (API templates)</strong> – Targeted checks for API-specific weaknesses and misconfigurations.</li>
-            <li><strong>Swagger / OpenAPI</strong> – Specification-driven mapping of endpoints and parameters.</li>
-            <li><strong>Insomnia</strong> – Lightweight API client for crafting and replaying complex requests.</li>
-            <li><strong>JWT Toolkit</strong> – Utilities for tampering with JSON Web Tokens and validating implementations.</li>
-          </ul>
-        </article>
-
-        <!-- Mobile Application Security Tools -->
-        <article class="skill-card observe" data-animate="fade-up" data-delay="0.1s" data-scope="mobile">
-          <div class="skill-icon">📱</div>
-          <h3>Mobile Application Security Tools</h3>
-          <p>Static and dynamic analysis of Android applications and their communication channels.</p>
-          <ul class="tool-list">
-            <li><strong>MobSF</strong> – Automated static and dynamic analysis of Android application packages.</li>
-            <li><strong>Frida</strong> – Dynamic instrumentation framework for runtime hooking and inspection.</li>
-            <li><strong>Objection</strong> – Runtime mobile exploration framework built on top of Frida.</li>
-            <li><strong>JADX</strong> – Decompiler for reviewing Android bytecode as readable Java/Kotlin.</li>
-            <li><strong>APKTool</strong> – Decompilation and rebuilding of APK resources for deeper inspection.</li>
-            <li><strong>Drozer</strong> – Android security assessment framework for exposed components.</li>
-            <li><strong>Android Studio Emulator</strong> – Controlled environment for dynamic testing and debugging.</li>
-          </ul>
-        </article>
-
-        <!-- Network Security Tools -->
-        <article class="skill-card observe" data-animate="fade-up" data-delay="0.15s" data-scope="network">
-          <div class="skill-icon">🛰</div>
-          <h3>Network Security Tools</h3>
-          <p>Discovery, enumeration, and exploitation across internal and external network surfaces.</p>
-          <ul class="tool-list">
-            <li><strong>Nmap</strong> – Network mapping and service fingerprinting with scriptable checks.</li>
-            <li><strong>Nessus</strong> – Vulnerability scanner for configuration and patch-related exposures.</li>
-            <li><strong>Netcat</strong> – Versatile utility for banner grabbing, tunneling, and simple listeners.</li>
-            <li><strong>Wireshark</strong> – Protocol analyzer for capturing and decoding network traffic.</li>
-            <li><strong>Masscan</strong> – High-speed port scanner for wide-range reconnaissance.</li>
-            <li><strong>Enum4linux</strong> – SMB and Windows enumeration against domain and workgroup hosts.</li>
-            <li><strong>CrackMapExec</strong> – Post-exploitation Swiss army knife for Active Directory environments.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- METHODOLOGY -->
-    <section id="methodology" class="section" aria-label="Testing methodology">
-      <header class="section-header observe" data-animate="fade-up">
-        <h2>Testing <span class="accent">Methodology</span></h2>
-        <p>Structured, repeatable process aligned with real-world adversary techniques.</p>
-      </header>
-
-      <ol class="timeline">
-        <li class="timeline-item observe" data-animate="fade-up">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">01</span>
-            <span class="timeline-title">Scope Understanding &amp; Target Mapping</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Clarify objectives, in-scope assets, constraints, and success criteria, then map systems and trust boundaries.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.05s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">02</span>
-            <span class="timeline-title">Reconnaissance &amp; Enumeration</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Gather OSINT, fingerprint technologies, and enumerate services, endpoints, and exposed interfaces.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.1s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">03</span>
-            <span class="timeline-title">Threat Modeling &amp; Attack Surface Analysis</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Identify high-value assets and plausible abuse paths to prioritize depth of testing.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.15s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">04</span>
-            <span class="timeline-title">Manual &amp; Automated Testing</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Combine targeted manual testing with curated tooling for broad and deep coverage.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.2s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">05</span>
-            <span class="timeline-title">Exploitation &amp; Impact Validation</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Safely exploit issues to prove impact while protecting availability and data integrity.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.25s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">06</span>
-            <span class="timeline-title">Risk Assessment (CVSS)</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Score findings with CVSS and business context so teams can prioritize remediation.</p>
-          </div>
-        </li>
-
-        <li class="timeline-item observe" data-animate="fade-up" data-delay="0.3s">
-          <button class="timeline-header" aria-expanded="false">
-            <span class="timeline-step">07</span>
-            <span class="timeline-title">Reporting &amp; Remediation Guidance</span>
-            <span class="timeline-toggle">+</span>
-          </button>
-          <div class="timeline-body">
-            <p>Deliver structured reports with clear reproduction steps, impact, and pragmatic fixes.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- WRITE-UPS -->
-    <section id="writeups" class="section" aria-label="Write-ups and recognitions">
-      <header class="section-header observe" data-animate="fade-up">
-        <h2>Write-ups &amp; <span class="accent">Recognitions</span></h2>
-        <p>Selected disclosures and research focused on measurable security improvements.</p>
-      </header>
-
-      <div class="cards-grid">
-        <article class="info-card observe" data-animate="fade-up">
-          <h3>Global Domain Service Provider</h3>
-          <p>Responsible vulnerability disclosure with bounty acknowledgment for impactful findings.</p>
-          <button class="btn small outline modal-open" data-modal="modal-domain">View details</button>
-        </article>
-
-        <article class="info-card observe" data-animate="fade-up" data-delay="0.05s">
-          <h3>Digital Book Platform</h3>
-          <p>Security issues in digital content distribution leading to stronger access controls.</p>
-          <button class="btn small outline modal-open" data-modal="modal-books">View details</button>
-        </article>
-
-        <article class="info-card observe" data-animate="fade-up" data-delay="0.1s">
-          <h3>U.S. Government Labor Organization</h3>
-          <p>Responsible disclosure leading to hardened public-facing services.</p>
-          <button class="btn small outline modal-open" data-modal="modal-labor">View details</button>
-        </article>
-
-        <article class="info-card observe" data-animate="fade-up" data-delay="0.15s">
-          <h3>Hacking the Fare</h3>
-          <p>Business logic attack chain used to manipulate ticket pricing safely.</p>
-          <button class="btn small primary modal-open" data-modal="modal-fare">Read overview</button>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section" aria-label="Contact and disclosure">
-      <header class="section-header observe" data-animate="fade-up">
-        <h2>Contact &amp; <span class="accent">Disclosure</span></h2>
-        <p>Ethical, coordinated engagement focused on improving security posture.</p>
-      </header>
-
-      <div class="contact-layout">
-        <form class="contact-form observe" data-animate="fade-right" id="contact-form" novalidate>
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="from_name" type="text" autocomplete="name" required />
-            <span class="field-error" aria-live="polite"></span>
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="reply_to" type="email" autocomplete="email" required />
-            <span class="field-error" aria-live="polite"></span>
-          </div>
-
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <span class="field-error" aria-live="polite"></span>
-          </div>
-
-          <button type="submit" class="btn primary full-width">Send Message</button>
-          <p class="form-status" aria-live="polite"></p>
-        </form>
-
-        <aside class="contact-info observe" data-animate="fade-left">
-          <div class="contact-block">
-            <h3>Direct Channels</h3>
-
-            <button class="copy-btn" data-copy="kavinkumarkumar758@gmail.com">
-              <span>Email: <span>kavinkumarkumar758@gmail.com</span></span>
-              <span class="copy-status" aria-hidden="true">Copy</span>
-            </button>
-
-            <a class="contact-chip" href="tel:+916374943589">
-              <span class="chip-label">Call</span>
-              <span class="chip-value">+91&nbsp;63749&nbsp;43589</span>
-            </a>
-
-            <a
-              class="contact-chip"
-              href="https://www.linkedin.com/in/kavinkumar-s758"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="chip-label">LinkedIn</span>
-              <span class="chip-value">/in/kavinkumar-s758</span>
-            </a>
-          </div>
-
-          <div class="contact-block">
-            <h3>Responsible Disclosure</h3>
-            <p>
-              All security testing is performed ethically and under appropriate authorization, following coordinated disclosure practices.
-            </p>
-            <p>
-              Production systems are tested using controlled techniques that minimize impact on availability, data, and users.
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Kavinkumar S. All rights reserved.</p>
-  </footer>
-
-  <div class="modal-backdrop" data-modal-backdrop hidden></div>
-
-  <!-- Modals -->
-  <section class="modal" id="modal-domain" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-domain-title">
-    <div class="modal-inner">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 id="modal-domain-title">Global Domain Service Provider</h3>
+<!-- ───── ABOUT ───── -->
+<section id="about" class="section">
+  <div class="section-header observe">
+    <p class="section-label">about</p>
+    <h2 class="section-title">Who I <span class="accent">Am</span></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-body observe">
       <p>
-        Engagement focused on securing account management and domain configuration flows that could otherwise support unauthorized changes and domain hijacking.
+        I'm a <strong>Security Engineer at Cycatz</strong>, conducting VAPT engagements both for external clients across industries and internally for the organization. My work spans web applications, mobile (Android), APIs, and network infrastructure.
       </p>
       <p>
-        Issues were reported via responsible disclosure, validated by the provider, and remediated with bounty acknowledgement.
+        My approach mirrors real-world adversary thinking — understanding business logic, mapping attack paths, and chaining low-risk issues into meaningful attack chains. Every finding I report comes with clear reproduction steps, CVSS scoring, and actionable remediation guidance.
+      </p>
+      <p>
+        Outside of client engagements, I practice responsible disclosure and contribute security research targeting real-world vulnerabilities in production systems.
       </p>
     </div>
-  </section>
+    <ul class="focus-list observe" data-delay="0.1s">
+      <li>Web Application Security</li>
+      <li>Android Mobile Security</li>
+      <li>API Security Testing</li>
+      <li>Network Penetration Testing</li>
+      <li>Responsible Disclosure</li>
+      <li>Security Report Writing</li>
+    </ul>
+  </div>
+</section>
 
-  <section class="modal" id="modal-books" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-books-title">
-    <div class="modal-inner">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 id="modal-books-title">Digital Book Distribution Platform</h3>
-      <p>
-        Identified weaknesses in entitlement checks and authorization controls that could have allowed unauthorized access to digital content.
-      </p>
-      <p>
-        Coordinated remediation helped strengthen access control logic and auditability, with digital recognition from the platform.
-      </p>
+<!-- ───── EDUCATION ───── -->
+<section id="education" class="section">
+  <div class="section-header observe">
+    <p class="section-label">education</p>
+    <h2 class="section-title">Academic <span class="accent">Background</span></h2>
+  </div>
+  <div class="edu-card observe">
+    <p class="edu-institution">Dr. Mahalingam College of Engineering and Technology · Pollachi, Coimbatore</p>
+    <h3 class="edu-degree">B.E — Computer Science &amp; Engineering <span style="color:var(--accent)">(Cyber Security)</span></h3>
+    <p class="edu-meta">2022 – 2026</p>
+    <span class="award-badge">🏆 Best Outgoing Student of the Department</span>
+  </div>
+</section>
+
+<!-- ───── CERTIFICATIONS ───── -->
+<section id="certifications" class="section">
+  <div class="section-header observe">
+    <p class="section-label">certifications</p>
+    <h2 class="section-title">Industry <span class="accent">Certifications</span></h2>
+    <p class="section-sub">Validated credentials in application and API security.</p>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card observe">
+      <div class="cert-shield">🛡️</div>
+      <div class="cert-tag">CAP</div>
+      <div class="cert-name">Certified AppSec Practitioner</div>
+      <div class="cert-issuer">The SecOps Group</div>
     </div>
-  </section>
-
-  <section class="modal" id="modal-labor" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-labor-title">
-    <div class="modal-inner">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 id="modal-labor-title">U.S. Government Labor Organization</h3>
-      <p>
-        Reported misconfigurations impacting public-facing systems, including exposure that could support phishing and information leakage.
-      </p>
-      <p>
-        The organization acknowledged the disclosure and implemented configuration and monitoring improvements.
-      </p>
+    <div class="cert-card observe" style="transition-delay:0.07s">
+      <div class="cert-shield">🔗</div>
+      <div class="cert-tag">CASA</div>
+      <div class="cert-name">Certified API Security Analyst</div>
+      <div class="cert-issuer">APIsec University</div>
     </div>
-  </section>
 
-  <section class="modal" id="modal-fare" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-fare-title">
-    <div class="modal-inner">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 id="modal-fare-title">Hacking the Fare: Business Logic Abuse</h3>
-      <p>
-        Demonstrated how flaws in fare calculation and discount validation allowed manipulation of pricing parameters to obtain tickets at reduced cost.
-      </p>
-      <p>
-        The work highlighted why process controls and reconciliation are as important as code-level fixes when defending against business logic attacks.
-      </p>
+  </div>
+</section>
+
+<!-- ───── TOOLS ───── -->
+<section id="tools" class="section">
+  <div class="section-header observe">
+    <p class="section-label">tools &amp; stack</p>
+    <h2 class="section-title">Technical <span class="accent">Arsenal</span></h2>
+    <p class="section-sub">Domain-specific tooling for coverage, speed, and depth.</p>
+  </div>
+  <div class="tools-filters observe">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="mobile">Mobile</button>
+    <button class="filter-btn" data-filter="api">API</button>
+    <button class="filter-btn" data-filter="network">Network</button>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card observe" data-scope="web">
+      <div class="tool-card-header">
+        <div class="tool-icon">🌐</div>
+        <div><div class="tool-card-title">Web Application</div><div class="tool-card-sub">Mapping, fuzzing &amp; exploitation</div></div>
+      </div>
+      <div class="tool-items">
+        <span class="tool-tag">Burp Suite Pro</span><span class="tool-tag">OWASP ZAP</span>
+        <span class="tool-tag">ffuf</span><span class="tool-tag">gobuster</span>
+        <span class="tool-tag">sqlmap</span><span class="tool-tag">ghauri</span>
+        <span class="tool-tag">nuclei</span><span class="tool-tag">nikto</span>
+      </div>
     </div>
-  </section>
+    <div class="tool-card observe" data-scope="api" style="transition-delay:0.05s">
+      <div class="tool-card-header">
+        <div class="tool-icon">🔗</div>
+        <div><div class="tool-card-title">API Security</div><div class="tool-card-sub">REST, JWT &amp; schema analysis</div></div>
+      </div>
+      <div class="tool-items">
+        <span class="tool-tag">Postman</span><span class="tool-tag">Burp Suite</span>
+        <span class="tool-tag">Insomnia</span><span class="tool-tag">JWT Toolkit</span>
+        <span class="tool-tag">Swagger / OpenAPI</span><span class="tool-tag">nuclei templates</span>
+      </div>
+    </div>
+    <div class="tool-card observe" data-scope="mobile" style="transition-delay:0.1s">
+      <div class="tool-card-header">
+        <div class="tool-icon">📱</div>
+        <div><div class="tool-card-title">Mobile (Android)</div><div class="tool-card-sub">Static &amp; dynamic APK analysis</div></div>
+      </div>
+      <div class="tool-items">
+        <span class="tool-tag">Frida</span><span class="tool-tag">Objection</span>
+        <span class="tool-tag">JADX</span><span class="tool-tag">APKTool</span>
+        <span class="tool-tag">MobSF</span><span class="tool-tag">Drozer</span>
+        <span class="tool-tag">ADB</span><span class="tool-tag">Android Studio</span>
+      </div>
+    </div>
+    <div class="tool-card observe" data-scope="network" style="transition-delay:0.15s">
+      <div class="tool-card-header">
+        <div class="tool-icon">🛰</div>
+        <div><div class="tool-card-title">Network</div><div class="tool-card-sub">Discovery, enum &amp; exploitation</div></div>
+      </div>
+      <div class="tool-items">
+        <span class="tool-tag">Nmap</span><span class="tool-tag">Nessus</span>
+        <span class="tool-tag">Masscan</span><span class="tool-tag">Wireshark</span>
+        <span class="tool-tag">Netcat</span><span class="tool-tag">Enum4linux</span>
+        <span class="tool-tag">CrackMapExec</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js" defer></script>
+<!-- ───── METHODOLOGY ───── -->
+<section id="methodology" class="section">
+  <div class="section-header observe">
+    <p class="section-label">methodology</p>
+    <h2 class="section-title">Testing <span class="accent">Process</span></h2>
+    <p class="section-sub">Structured, repeatable process aligned with real-world adversary techniques.</p>
+  </div>
+  <ul class="methodology-list observe">
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">01</span>
+        <span class="method-title">Scope Understanding &amp; Target Mapping</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Clarify objectives, in-scope assets, constraints, and success criteria, then map systems and trust boundaries.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">02</span>
+        <span class="method-title">Reconnaissance &amp; Enumeration</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Gather OSINT, fingerprint technologies, and enumerate services, endpoints, and exposed interfaces.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">03</span>
+        <span class="method-title">Threat Modeling &amp; Attack Surface Analysis</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Identify high-value assets and plausible abuse paths to prioritize depth of testing.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">04</span>
+        <span class="method-title">Manual &amp; Automated Testing</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Combine targeted manual testing with curated tooling for broad and deep coverage across all attack surfaces.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">05</span>
+        <span class="method-title">Exploitation &amp; Impact Validation</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Safely exploit issues to prove impact while protecting availability and data integrity throughout the engagement.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">06</span>
+        <span class="method-title">Risk Assessment (CVSS)</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Score findings with CVSS 3.1 and business context so teams can prioritize remediation effectively.</p></div>
+    </li>
+    <li class="method-item">
+      <button class="method-header" onclick="toggleMethod(this)">
+        <span class="method-num">07</span>
+        <span class="method-title">Reporting &amp; Remediation Guidance</span>
+        <span class="method-toggle">+</span>
+      </button>
+      <div class="method-body"><p>Deliver structured reports with clear reproduction steps, OWASP mapping, impact rating, and pragmatic fixes.</p></div>
+    </li>
+  </ul>
+</section>
+
+<!-- ───── WRITE-UPS ───── -->
+<section id="writeups" class="section">
+  <div class="section-header observe">
+    <p class="section-label">write-ups &amp; recognitions</p>
+    <h2 class="section-title">Security <span class="accent">Research</span></h2>
+    <p class="section-sub">Selected disclosures and research focused on measurable security improvements.</p>
+  </div>
+  <div class="writeups-grid">
+    <div class="writeup-card observe">
+      <div class="writeup-tag">Responsible Disclosure · Bug Bounty</div>
+      <div class="writeup-title">Global Domain Service Provider</div>
+      <div class="writeup-desc">Responsible vulnerability disclosure with bounty acknowledgment. Identified account management and domain configuration flaws supporting unauthorized changes and domain hijacking.</div>
+      <button class="writeup-btn" onclick="openModal('modal-domain')">View Details →</button>
+    </div>
+    <div class="writeup-card observe" style="transition-delay:0.06s">
+      <div class="writeup-tag">Access Control · Authorization</div>
+      <div class="writeup-title">Digital Book Platform</div>
+      <div class="writeup-desc">Security issues in digital content distribution. Identified authorization control weaknesses enabling unauthorized access to paid digital content.</div>
+      <button class="writeup-btn" onclick="openModal('modal-books')">View Details →</button>
+    </div>
+    <div class="writeup-card observe" style="transition-delay:0.12s">
+      <div class="writeup-tag">Responsible Disclosure · Government</div>
+      <div class="writeup-title">U.S. Government Labor Organization</div>
+      <div class="writeup-desc">Responsible disclosure leading to hardened public-facing services. Reported misconfigurations supporting phishing and information leakage scenarios.</div>
+      <button class="writeup-btn" onclick="openModal('modal-labor')">View Details →</button>
+    </div>
+    <div class="writeup-card observe" style="transition-delay:0.18s">
+      <div class="writeup-tag">Business Logic · Price Manipulation</div>
+      <div class="writeup-title">Hacking the Fare</div>
+      <div class="writeup-desc">Business logic attack chain used to manipulate ticket pricing safely via fare calculation and discount validation flaws.</div>
+      <button class="writeup-btn" onclick="openModal('modal-fare')">Read Overview →</button>
+    </div>
+    <div class="writeup-card observe" style="transition-delay:0.24s">
+      <div class="writeup-tag">Responsible Disclosure · International Org</div>
+      <div class="writeup-title">UNESCO</div>
+      <div class="writeup-desc">Identified and responsibly disclosed security vulnerabilities in UNESCO's public-facing infrastructure, receiving official acknowledgement from the organization.</div>
+      <button class="writeup-btn" onclick="openModal('modal-unesco')">View Details →</button>
+    </div>
+    <div class="writeup-card observe" style="transition-delay:0.30s">
+      <div class="writeup-tag">Responsible Disclosure · Corporate</div>
+      <div class="writeup-title">Tata Motors</div>
+      <div class="writeup-desc">Responsibly disclosed security vulnerabilities in Tata Motors' digital assets, contributing to the hardening of their web presence with official acknowledgement.</div>
+      <button class="writeup-btn" onclick="openModal('modal-tata')">View Details →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CONTACT ───── -->
+<section id="contact" class="section">
+  <div class="section-header observe">
+    <p class="section-label">contact &amp; disclosure</p>
+    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+    <p class="section-sub">Ethical, coordinated engagement focused on improving security posture.</p>
+  </div>
+  <div class="contact-layout">
+    <form class="contact-form observe" id="contact-form" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="from_name" type="text" autocomplete="name" placeholder="Your name" required />
+        <span class="field-error" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="reply_to" type="email" autocomplete="email" placeholder="your@email.com" required />
+        <span class="field-error" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me about your engagement..." required></textarea>
+        <span class="field-error" aria-live="polite"></span>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p class="form-status" aria-live="polite"></p>
+    </form>
+
+    <aside class="contact-info observe" style="transition-delay:0.1s">
+      <div class="contact-block">
+        <h3>Direct Channels</h3>
+        <div class="channel-list">
+          <button class="copy-btn" data-copy="kavinkumarkumar758@gmail.com">
+            <div class="copy-icon">✉️</div>
+            <div class="copy-meta">
+              <div class="copy-label">Email</div>
+              <div class="copy-value">kavinkumarkumar758@gmail.com</div>
+            </div>
+            <span class="copy-action">Copy</span>
+          </button>
+          <a class="channel-link" href="https://www.linkedin.com/in/kavinkumar-s758" target="_blank" rel="noreferrer">
+            <div class="channel-icon">💼</div>
+            <div class="channel-meta">
+              <div class="channel-label">LinkedIn</div>
+              <div class="channel-value">/in/kavinkumar-s758</div>
+            </div>
+          </a>
+          <a class="channel-link" href="https://github.com/KAVINKUMAR-S758" target="_blank" rel="noreferrer">
+            <div class="channel-icon">🐙</div>
+            <div class="channel-meta">
+              <div class="channel-label">GitHub</div>
+              <div class="channel-value">KAVINKUMAR-S758</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h3>Responsible Disclosure</h3>
+        <p class="disclosure-note">
+          All security testing is performed ethically and under appropriate authorization, following coordinated disclosure practices. Production systems are tested using controlled techniques that minimize impact on availability, data, and users.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> <span>Kavinkumar S</span> · Built with purpose, tested with intent.</p>
+</footer>
+
+<!-- Backdrop -->
+<div class="modal-backdrop" id="modal-backdrop" onclick="closeAllModals()"></div>
+
+<!-- Modals -->
+<div class="modal" id="modal-domain">
+  <div class="modal-header">
+    <div><div class="modal-tag">Responsible Disclosure · Bug Bounty</div><div class="modal-title">Global Domain Service Provider</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Engagement focused on securing account management and domain configuration flows that could otherwise support unauthorized changes and domain hijacking.</p>
+    <p>Issues were reported via responsible disclosure, validated by the provider, and remediated with bounty acknowledgement.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-books">
+  <div class="modal-header">
+    <div><div class="modal-tag">Access Control · Authorization</div><div class="modal-title">Digital Book Distribution Platform</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Identified weaknesses in entitlement checks and authorization controls that could have allowed unauthorized access to digital content.</p>
+    <p>Coordinated remediation helped strengthen access control logic and auditability, with digital recognition from the platform.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-labor">
+  <div class="modal-header">
+    <div><div class="modal-tag">Responsible Disclosure · Government</div><div class="modal-title">U.S. Government Labor Organization</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Reported misconfigurations impacting public-facing systems, including exposure that could support phishing and information leakage.</p>
+    <p>The organization acknowledged the disclosure and implemented configuration and monitoring improvements.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-unesco">
+  <div class="modal-header">
+    <div><div class="modal-tag">Responsible Disclosure · International Org</div><div class="modal-title">UNESCO</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Identified and responsibly disclosed security vulnerabilities in UNESCO's public-facing digital infrastructure.</p>
+    <p>The organization reviewed and acknowledged the disclosure, implementing fixes to strengthen their security posture.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-tata">
+  <div class="modal-header">
+    <div><div class="modal-tag">Responsible Disclosure · Corporate</div><div class="modal-title">Tata Motors</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Responsibly disclosed security vulnerabilities identified in Tata Motors' web assets and digital infrastructure.</p>
+    <p>Received official acknowledgement from the organization following coordinated remediation of the reported findings.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-fare">
+  <div class="modal-header">
+    <div><div class="modal-tag">Business Logic · Price Manipulation</div><div class="modal-title">Hacking the Fare</div></div>
+    <button class="modal-close" onclick="closeAllModals()">✕</button>
+  </div>
+  <div class="modal-body">
+    <p>Demonstrated how flaws in fare calculation and discount validation allowed manipulation of pricing parameters to obtain tickets at reduced cost.</p>
+    <p>The work highlighted why process controls and reconciliation are as important as code-level fixes when defending against business logic attacks.</p>
+  </div>
+</div>
+
+<script>
+/* ── Year ── */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ── Terminal typewriter ── */
+const lines = [
+  'nmap -sV -sC target.scope',
+  'frida -U -l ssl_bypass.js com.target.app',
+  'sqlmap -u "https://target/api?id=1" --dbs',
+  'status: 3 critical findings — reporting...',
+];
+let li = 0, ci = 0;
+const els = [0,1,2,3].map(i => document.getElementById('tl'+i));
+function typeNext() {
+  if (li >= lines.length) return;
+  if (ci <= lines[li].length) {
+    els[li].textContent = lines[li].slice(0,ci);
+    ci++;
+    setTimeout(typeNext, 42);
+  } else {
+    li++; ci = 0;
+    if (li < lines.length) setTimeout(typeNext, 380);
+  }
+}
+setTimeout(typeNext, 900);
+
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.observe').forEach(el => obs.observe(el));
+
+/* ── Nav toggle ── */
+const toggle = document.querySelector('.nav-toggle');
+const navLinks = document.getElementById('nav-links');
+toggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  toggle.setAttribute('aria-expanded', false);
+}));
+
+/* ── Tool filter ── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.tool-card').forEach(card => {
+      const show = f === 'all' || card.dataset.scope === f;
+      card.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+/* ── Methodology accordion ── */
+function toggleMethod(btn) {
+  const item = btn.closest('.method-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.method-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── Modals ── */
+function openModal(id) {
+  document.getElementById('modal-backdrop').classList.add('open');
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAllModals() {
+  document.getElementById('modal-backdrop').classList.remove('open');
+  document.querySelectorAll('.modal').forEach(m => m.classList.remove('open'));
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllModals(); });
+
+/* ── Copy email ── */
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+      const action = btn.querySelector('.copy-action');
+      action.textContent = 'Copied!';
+      setTimeout(() => action.textContent = 'Copy', 2000);
+    });
+  });
+});
+
+/* ── Contact form (EmailJS) ── */
+(function(){ if (typeof emailjs !== 'undefined') emailjs.init('YOUR_PUBLIC_KEY'); })();
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const status = this.querySelector('.form-status');
+  status.textContent = 'Sending...';
+  // Replace with your EmailJS service/template IDs
+  // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', this).then(() => {
+  //   status.textContent = 'Message sent successfully!';
+  //   this.reset();
+  // }).catch(() => { status.textContent = 'Something went wrong. Try emailing directly.'; });
+  setTimeout(() => { status.textContent = '✓ Message sent! I\'ll get back to you soon.'; this.reset(); }, 800);
+});
+</script>
+
+<style>
+/* ── Custom Cursor ── */
+* { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: #00D4FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.15s;
+  box-shadow: 0 0 10px #00D4FF, 0 0 20px rgba(0,212,255,0.5);
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(0,212,255,0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s;
+}
+.cursor-trail {
+  position: fixed;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99997;
+  transform: translate(-50%, -50%);
+  background: #00D4FF;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* Expand cursor on hover over interactive elements */
+body.cursor-hover .cursor-dot  { width: 14px; height: 14px; background: #fff; box-shadow: 0 0 14px #00D4FF, 0 0 30px rgba(0,212,255,0.6); }
+body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0,212,255,0.8); }
+</style>
+
+<!-- Cursor elements -->
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<script>
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+
+  let mx = 0, my = 0;
+  let rx = 0, ry = 0;
+
+  // Trail particles pool
+  const TRAIL_COUNT = 12;
+  const trail = [];
+  for (let i = 0; i < TRAIL_COUNT; i++) {
+    const el = document.createElement('div');
+    el.className = 'cursor-trail';
+    el.style.width  = (5 - i * 0.25) + 'px';
+    el.style.height = (5 - i * 0.25) + 'px';
+    el.style.opacity = 0;
+    document.body.appendChild(el);
+    trail.push({ el, x: 0, y: 0 });
+  }
+
+  // Track mouse
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+
+    // Spawn a trail particle
+    spawnTrail(mx, my);
+  });
+
+  // Smooth ring follow
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function animate() {
+    rx = lerp(rx, mx, 0.12);
+    ry = lerp(ry, my, 0.12);
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Trail logic
+  let trailIdx = 0;
+  let lastTrail = 0;
+  function spawnTrail(x, y) {
+    const now = Date.now();
+    if (now - lastTrail < 30) return; // throttle
+    lastTrail = now;
+
+    const p = trail[trailIdx % TRAIL_COUNT];
+    trailIdx++;
+    p.el.style.left    = x + 'px';
+    p.el.style.top     = y + 'px';
+    p.el.style.opacity = 0.55;
+    p.el.style.transform = `translate(-50%,-50%) scale(1)`;
+    p.el.style.transition = 'none';
+
+    // fade + shrink out
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        p.el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        p.el.style.opacity    = 0;
+        p.el.style.transform  = `translate(-50%,-50%) scale(0.2)`;
+      });
+    });
+  }
+
+  // Expand on interactive elements
+  const interactives = 'a, button, input, textarea, [role="tab"], .writeup-btn, .filter-btn, .copy-btn';
+  document.querySelectorAll(interactives).forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // Hide when leaving window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity  = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity  = '1';
+    ring.style.opacity = '1';
+  });
+})();
+</script>
 </body>
 </html>
-
