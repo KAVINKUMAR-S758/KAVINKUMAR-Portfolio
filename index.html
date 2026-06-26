@@ -1092,7 +1092,7 @@ body.terminal-active #ti-input { cursor: text !important; }
 @keyframes hint-pulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
 </style>
 
-<div id="terminal-hint">type &nbsp;<span style="color:#00D4FF;opacity:0.9">./verbose</span>&nbsp; and press Enter</div>
+<div id="terminal-hint">type &nbsp;<span style="color:#00D4FF;opacity:0.9">./ enumerate</span>&nbsp; and press Enter</div>
 
 <script>
 (function () {
@@ -1178,7 +1178,7 @@ async function showWelcome() {
   addGap();
   addLine('Last login: ' + new Date().toDateString() + ' from 192.168.x.x via ssh', 'tl-dim');
   addGap();
-  addLine('Type  ./verbose  to view my portfolio.', 'tl-warn');
+  addLine('Type  ./ enumerate  to view my portfolio.', 'tl-warn');
   addLine('Type  help       for available commands.', 'tl-dim');
   addGap();
 }
@@ -1188,7 +1188,7 @@ const COMMANDS = {
   'help': async () => {
     addGap();
     addLine('Available commands:', 'tl-bold');
-    addLine('  ./verbose     — Launch portfolio', 'tl-accent');
+    addLine('  ./ enumerate     — Launch portfolio', 'tl-accent');
     addLine('  whoami        — About me', '');
     addLine('  skills        — Technical stack', '');
     addLine('  certs         — My certifications', '');
@@ -1238,10 +1238,10 @@ const COMMANDS = {
   'date': async () => {
     addLine(new Date().toString(), 'tl-dim');
   },
-  './verbose': null, // handled separately
+  './ enumerate': null, // handled separately
 };
 
-// ── ./verbose sequence ─────────────────────────────────────
+// ── ./ enumerate sequence ─────────────────────────────────────
 async function runResume() {
   // hide hint
   hint.style.display = 'none';
@@ -1250,7 +1250,7 @@ async function runResume() {
   inputEl.style.display = 'none';
 
   addGap();
-  addLine('[*] Executing verbose...', 'tl-accent');
+  addLine('[*] Executing  enumerate...', 'tl-accent');
   await wait(300);
   addGap();
 
@@ -1290,7 +1290,7 @@ inputEl.addEventListener('keydown', async (e) => {
   // echo the command
   echoCmd(raw);
 
-  if (cmd === './verbose' || cmd === './verbose' || cmd === 'verbose') {
+  if (cmd === './ enumerate' || cmd === './ enumerate' || cmd === ' enumerate') {
     await runResume();
     return;
   }
