@@ -2,13 +2,91 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Kavinkumar S | Security Engineer & VAPT Specialist</title>
+<title>Kavinkumar S | Security Engineer & VAPT Specialist | Cycatz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Kavinkumar S — Security Engineer at Cycatz. VAPT specialist across web, mobile, API, and network domains." />
-<meta property="og:title" content="Kavinkumar S | Security Engineer" />
-<meta property="og:description" content="Security Engineer & VAPT specialist — web, mobile, API, and network security." />
-<meta property="og:type" content="website" />
-<meta name="google-site-verification" content="rbnRG_nvhE3Koa_usUGIvgHSYgOZGt2yktnod5GbjRc" />   
+
+<!-- ── Primary SEO ── -->
+<meta name="description" content="Kavinkumar S — Security Engineer at Cycatz. Certified VAPT specialist with expertise in web, mobile (Android), API, and network penetration testing. CAP & CASA certified. Acknowledged by UNESCO and Tata Motors." />
+<meta name="keywords" content="Kavinkumar S, security engineer, penetration tester, VAPT, vulnerability assessment, web application security, mobile security, Android security, API security, network security, Cycatz, bug bounty, responsible disclosure, CAP certified, CASA certified, ethical hacker, cybersecurity India" />
+<meta name="author" content="Kavinkumar S" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#080D1A" />
+<link rel="canonical" href="https://kavinkumar-portfolio-six.vercel.app/" />
+
+<!-- ── Open Graph (LinkedIn, Facebook, WhatsApp previews) ── -->
+<meta property="og:type"        content="website" />
+<meta property="og:url"         content="https://kavinkumar-portfolio-six.vercel.app/" />
+<meta property="og:title"       content="Kavinkumar S | Security Engineer & VAPT Specialist" />
+<meta property="og:description" content="Security Engineer at Cycatz. VAPT specialist across web, mobile, API & network. CAP & CASA certified. Acknowledged by UNESCO and Tata Motors." />
+<meta property="og:image"       content="https://kavinkumar-portfolio-six.vercel.app/profile.png" />
+<meta property="og:image:width"  content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name"   content="Kavinkumar S Portfolio" />
+<meta property="og:locale"      content="en_IN" />
+
+<!-- ── Twitter / X Card ── -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Kavinkumar S | Security Engineer & VAPT Specialist" />
+<meta name="twitter:description" content="Security Engineer at Cycatz. Web, mobile, API & network pentesting. CAP & CASA certified." />
+<meta name="twitter:image"       content="https://kavinkumar-portfolio-six.vercel.app/profile.png" />
+
+<!-- ── JSON-LD Structured Data (Google rich results) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kavinkumar S",
+  "url": "https://kavinkumar-portfolio-six.vercel.app/",
+  "image": "https://kavinkumar-portfolio-six.vercel.app/profile.png",
+  "jobTitle": "Security Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Cycatz"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Dr. Mahalingam College of Engineering and Technology",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pollachi",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    }
+  },
+  "knowsAbout": [
+    "Vulnerability Assessment and Penetration Testing",
+    "Web Application Security",
+    "Mobile Application Security",
+    "API Security",
+    "Network Security",
+    "Android Security",
+    "Responsible Disclosure"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified AppSec Practitioner (CAP)",
+      "credentialCategory": "Professional Certification",
+      "recognizedBy": { "@type": "Organization", "name": "The SecOps Group" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified API Security Analyst (CASA)",
+      "credentialCategory": "Professional Certification",
+      "recognizedBy": { "@type": "Organization", "name": "APIsec University" }
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/kavinkumar-s758",
+    "https://github.com/KAVINKUMAR-S758"
+  ],
+  "email": "kavinkumarkumar758@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -880,6 +958,347 @@ footer span { color: var(--accent); }
 </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════
+     INTERACTIVE TERMINAL
+══════════════════════════════════════════ -->
+<div id="terminal-overlay">
+  <div id="terminal-window">
+    <div id="terminal-topbar">
+      <span class="tb-btn tb-red"></span>
+      <span class="tb-btn tb-yellow"></span>
+      <span class="tb-btn tb-green"></span>
+      <span class="tb-title">kavinkumar@cycatz:~</span>
+    </div>
+    <div id="terminal-body">
+      <div id="terminal-output"></div>
+      <div id="terminal-input-line">
+        <span class="ti-prompt">kavinkumar@cycatz:~$&nbsp;</span>
+        <input id="ti-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" autofocus />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* hide real cursor on portfolio until terminal done */
+body.terminal-active { overflow: hidden; }
+
+#terminal-overlay {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #050810;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  transition: opacity 0.9s ease;
+}
+#terminal-overlay.fade-out { opacity: 0; pointer-events: none; }
+
+#terminal-window {
+  width: 100%; max-width: 800px;
+  background: #0A0F1C;
+  border-radius: 12px;
+  border: 1px solid rgba(0,212,255,0.2);
+  box-shadow: 0 0 60px rgba(0,212,255,0.1), 0 30px 80px rgba(0,0,0,0.8);
+  overflow: hidden;
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  font-size: 0.82rem;
+}
+
+#terminal-topbar {
+  background: #111825;
+  padding: 0.65rem 1rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  user-select: none;
+}
+.tb-btn { width: 12px; height: 12px; border-radius: 50%; }
+.tb-red    { background: #FF5F57; }
+.tb-yellow { background: #FFBD2E; }
+.tb-green  { background: #28CA41; }
+.tb-title  {
+  margin: 0 auto;
+  font-size: 0.68rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em;
+}
+
+#terminal-body {
+  padding: 1.25rem 1.5rem 1.4rem;
+  min-height: 420px; max-height: 75vh;
+  overflow-y: auto; overflow-x: hidden;
+  cursor: text;
+}
+#terminal-body::-webkit-scrollbar { width: 3px; }
+#terminal-body::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.25); border-radius: 2px; }
+
+#terminal-output { color: #c8d8e8; line-height: 1.9; }
+
+/* Output line types */
+.tl          { display: block; white-space: pre-wrap; word-break: break-all; }
+.tl-prompt   { color: #00D4FF; font-weight: 600; }
+.tl-cmd      { color: #ffffff; font-weight: 700; }
+.tl-dim      { color: rgba(200,216,232,0.3); }
+.tl-success  { color: #28CA41; }
+.tl-warn     { color: #FFBD2E; }
+.tl-accent   { color: #00D4FF; }
+.tl-red      { color: #FF5F57; }
+.tl-bold     { color: #ffffff; font-weight: 700; }
+.tl-gap      { display: block; height: 0.45rem; }
+
+/* Input row */
+#terminal-input-line {
+  display: flex; align-items: center;
+  margin-top: 0.1rem;
+}
+.ti-prompt { color: #00D4FF; font-weight: 600; white-space: pre; flex-shrink: 0; }
+#ti-input {
+  background: transparent; border: none; outline: none;
+  color: #ffffff; font-family: inherit; font-size: inherit; font-weight: 700;
+  flex: 1; caret-color: #00D4FF; padding: 0; min-width: 2px;
+  width: 100%;
+}
+
+
+/* Progress bar */
+.prog-wrap {
+  display: inline-block; background: rgba(255,255,255,0.07);
+  border-radius: 2px; width: 200px; height: 9px;
+  vertical-align: middle; overflow: hidden; margin: 0 0.5rem;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00D4FF, #007baa);
+  border-radius: 2px; width: 0%;
+}
+
+/* Hint text */
+#terminal-hint {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 100000;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.68rem; color: rgba(0,212,255,0.45);
+  letter-spacing: 0.06em; text-align: center;
+  animation: hint-pulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes hint-pulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
+</style>
+
+<div id="terminal-hint">type &nbsp;<span style="color:#00D4FF;opacity:0.9">./verbose</span>&nbsp; and press Enter</div>
+
+<script>
+(function () {
+
+const overlay = document.getElementById('terminal-overlay');
+const outEl   = document.getElementById('terminal-output');
+const inputEl = document.getElementById('ti-input');
+const hint    = document.getElementById('terminal-hint');
+const tbody   = document.getElementById('terminal-body');
+
+document.body.classList.add('terminal-active');
+
+// ── Helpers ─────────────────────────────────────────────
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function scrollBot() { tbody.scrollTop = tbody.scrollHeight; }
+
+function addLine(text, cls) {
+  const s = document.createElement('span');
+  s.className = 'tl ' + (cls || '');
+  s.textContent = text;
+  outEl.appendChild(s);
+  scrollBot();
+}
+function addGap() {
+  const s = document.createElement('span'); s.className = 'tl-gap';
+  outEl.appendChild(s); scrollBot();
+}
+function addHTML(html) {
+  const s = document.createElement('span'); s.className = 'tl';
+  s.innerHTML = html; outEl.appendChild(s); scrollBot();
+}
+
+// Print entered command into output history
+function echoCmd(cmd) {
+  addHTML('<span class="tl-prompt">kavinkumar@cycatz:~$&nbsp;</span><span class="tl-cmd">' + cmd + '</span>');
+}
+
+// Animated progress bar
+async function progress(label, ms) {
+  const row  = document.createElement('span'); row.className = 'tl';
+  const fill = document.createElement('span'); fill.className = 'prog-fill';
+  const bar  = document.createElement('span'); bar.className = 'prog-wrap';
+  bar.appendChild(fill);
+  const pct  = document.createElement('span');
+  pct.style.cssText = 'color:rgba(200,216,232,0.45); margin-left:0.3rem;';
+  pct.textContent   = '0%';
+  row.appendChild(document.createTextNode(label));
+  row.appendChild(bar);
+  row.appendChild(pct);
+  outEl.appendChild(row); scrollBot();
+
+  const steps = 35, stepMs = ms / steps;
+  for (let i = 1; i <= steps; i++) {
+    await wait(stepMs);
+    fill.style.width = (i / steps * 100) + '%';
+    pct.textContent  = Math.round(i / steps * 100) + '%';
+    scrollBot();
+  }
+  pct.style.color    = '#28CA41';
+  pct.textContent    = '100%';
+  await wait(100);
+}
+
+// Always keep input focused when clicking terminal body
+tbody.addEventListener('click', () => inputEl.focus());
+inputEl.focus();
+
+// ── Boot welcome message ─────────────────────────────────
+async function showWelcome() {
+  addLine('', 'tl-dim');
+  addLine('  ██╗  ██╗ █████╗ ██╗   ██╗██╗███╗  ██╗', 'tl-accent');
+  addLine('  ██║ ██╔╝██╔══██╗██║   ██║██║████╗ ██║', 'tl-accent');
+  addLine('  █████╔╝ ███████║╚██╗ ██╔╝██║██╔██╗██║', 'tl-accent');
+  addLine('  ██╔═██╗ ██╔══██║  ╚███╔╝ ██║██║╚████║', 'tl-accent');
+  addLine('  ██║  ██╗██║  ██║   ██╔╝  ██║██║ ╚███║', 'tl-accent');
+  addLine('  ╚═╝  ╚═╝╚═╝  ╚═╝  ╚══╝   ╚═╝╚═╝  ╚══╝', 'tl-accent');
+  addGap();
+  addLine('  Security Engineer @ Cycatz  |  Penetration Tester', 'tl-dim');
+  addLine('  CAP  |  CASA  |  UNESCO  |  Tata Motors', 'tl-dim');
+  addGap();
+  addLine('─────────────────────────────────────────────────────', 'tl-dim');
+  addGap();
+  addLine('Last login: ' + new Date().toDateString() + ' from 192.168.x.x via ssh', 'tl-dim');
+  addGap();
+  addLine('Type  ./verbose  to view my portfolio.', 'tl-warn');
+  addLine('Type  help       for available commands.', 'tl-dim');
+  addGap();
+}
+
+// ── Available commands ───────────────────────────────────
+const COMMANDS = {
+  'help': async () => {
+    addGap();
+    addLine('Available commands:', 'tl-bold');
+    addLine('  ./verbose     — Launch portfolio', 'tl-accent');
+    addLine('  whoami        — About me', '');
+    addLine('  skills        — Technical stack', '');
+    addLine('  certs         — My certifications', '');
+    addLine('  contact       — Get in touch', '');
+    addLine('  clear         — Clear terminal', 'tl-dim');
+    addGap();
+  },
+  'whoami': async () => {
+    addGap();
+    addLine('Kavinkumar S', 'tl-bold');
+    addLine('Role   : Security Engineer @ Cycatz', '');
+    addLine('Focus  : Web · Mobile · API · Network VAPT', '');
+    addLine('College: Dr. Mahalingam College of Engineering & Technology', '');
+    addLine('Award  : Best Outgoing Student of the Department', 'tl-success');
+    addGap();
+  },
+  'skills': async () => {
+    addGap();
+    addLine('[ Web ]     Burp Suite Pro, sqlmap, ffuf, nuclei, nikto', '');
+    addLine('[ Mobile ]  Frida, JADX, APKTool, Objection, MobSF, Drozer', '');
+    addLine('[ API ]     Postman, JWT Toolkit, Insomnia, Swagger', '');
+    addLine('[ Network ] Nmap, Nessus, Masscan, Wireshark, CrackMapExec', '');
+    addGap();
+  },
+  'certs': async () => {
+    addGap();
+    addLine('[✓] Certified AppSec Practitioner (CAP)      — The SecOps Group', 'tl-success');
+    addLine('[✓] Certified API Security Analyst (CASA)    — APIsec University', 'tl-success');
+    addGap();
+  },
+  'contact': async () => {
+    addGap();
+    addLine('Email   : kavinkumarkumar758@gmail.com', '');
+    addLine('LinkedIn: linkedin.com/in/kavinkumar-s758', 'tl-accent');
+    addLine('GitHub  : github.com/KAVINKUMAR-S758', 'tl-accent');
+    addGap();
+  },
+  'clear': async () => {
+    outEl.innerHTML = '';
+  },
+  'ls': async () => {
+    addGap();
+    addLine('about.md   education.md   certifications.txt   writeups/', 'tl-dim');
+    addLine('tools.sh   contact.json   resume*', '');
+    addGap();
+  },
+  'date': async () => {
+    addLine(new Date().toString(), 'tl-dim');
+  },
+  './verbose': null, // handled separately
+};
+
+// ── ./verbose sequence ─────────────────────────────────────
+async function runResume() {
+  // hide hint
+  hint.style.display = 'none';
+  // disable input during sequence
+  inputEl.disabled = true;
+  inputEl.style.display = 'none';
+
+  addGap();
+  addLine('[*] Executing verbose...', 'tl-accent');
+  await wait(300);
+  addGap();
+
+  await progress('  Verifying identity      ', 600);
+  await progress('  Loading experience      ', 500);
+  await progress('  Mounting writeups       ', 550);
+  await progress('  Rendering UI            ', 480);
+
+  addGap();
+  await wait(200);
+  addLine('[✓] Authentication passed.', 'tl-success');
+  await wait(150);
+  addLine('[✓] All assets loaded.', 'tl-success');
+  await wait(150);
+  addLine('[✓] Launching portfolio...', 'tl-success');
+  addGap();
+  await wait(300);
+  addLine('  ██████████████████████  ACCESS GRANTED  ██████████████████████', 'tl-accent');
+  await wait(1000);
+
+  overlay.classList.add('fade-out');
+  document.body.classList.remove('terminal-active');
+  setTimeout(() => { overlay.style.display = 'none'; }, 950);
+}
+
+// ── Handle Enter key ─────────────────────────────────────
+inputEl.addEventListener('keydown', async (e) => {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+
+  const raw = inputEl.value.trim();
+  const cmd = raw.toLowerCase();
+  inputEl.value = '';
+
+  if (!raw) return;
+
+  // echo the command
+  echoCmd(raw);
+
+  if (cmd === './verbose' || cmd === './verbose' || cmd === 'verbose') {
+    await runResume();
+    return;
+  }
+
+  if (COMMANDS[cmd]) {
+    await COMMANDS[cmd]();
+  } else {
+    addGap();
+    addLine('bash: ' + raw + ': command not found. Type help for available commands.', 'tl-red');
+    addGap();
+  }
+});
+
+showWelcome();
+
+})();
+</script>
+
 
 <div class="bg-canvas"></div>
 <div class="bg-grid"></div>
