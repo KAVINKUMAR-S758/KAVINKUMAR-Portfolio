@@ -983,6 +983,14 @@ footer span { color: var(--accent); }
 <style>
 /* hide real cursor on portfolio until terminal done */
 body.terminal-active { overflow: hidden; }
+/* hide custom cursor dot+ring during terminal */
+body.terminal-active #cursorDot,
+body.terminal-active #cursorRing,
+body.terminal-active .cursor-trail { display: none !important; }
+/* hide system cursor everywhere during terminal */
+body.terminal-active * { cursor: none !important; }
+/* but show normal text cursor only on the input */
+body.terminal-active #ti-input { cursor: text !important; }
 
 #terminal-overlay {
   position: fixed; inset: 0; z-index: 99999;
@@ -1054,6 +1062,8 @@ body.terminal-active { overflow: hidden; }
   color: #ffffff; font-family: inherit; font-size: inherit; font-weight: 700;
   flex: 1; caret-color: #00D4FF; padding: 0; min-width: 2px;
   width: 100%;
+  /* block-style blinking caret */
+  caret-shape: block;
 }
 
 
