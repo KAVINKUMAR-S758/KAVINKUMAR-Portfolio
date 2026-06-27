@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <meta charset="UTF-8" />
+<link rel="icon" type="image/jpeg" href="favicon.jpg" />
+<link rel="shortcut icon" type="image/jpeg" href="favicon.jpg" />
+<link rel="apple-touch-icon" href="favicon.jpg" />
 <title>Kavinkumar S | Security Engineer & VAPT Specialist | Cycatz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -720,35 +726,100 @@ main { position: relative; z-index: 1; }
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
 }
+
+/* ── Writeup card ── */
 .writeup-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  display: flex; flex-direction: column; gap: 0.75rem;
-  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  display: flex; flex-direction: column; gap: 0.65rem;
   position: relative; overflow: hidden;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  cursor: pointer;
 }
+
+/* Scan line sweep on hover */
 .writeup-card::before {
+  content: '';
+  position: absolute; top: -100%; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to bottom, transparent, rgba(0,212,255,0.04), transparent);
+  transition: top 0.55s ease;
+  pointer-events: none; z-index: 1;
+}
+.writeup-card:hover::before { top: 160%; }
+
+/* Bottom accent line */
+.writeup-card::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
   transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s;
+  transition: transform 0.35s ease;
 }
-.writeup-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
-.writeup-card:hover::before { transform: scaleX(1); }
+.writeup-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+.writeup-card:hover::after { transform: scaleX(1); }
+
+/* Card top row: disc ID + severity */
+.writeup-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.1rem;
+}
+.disc-id {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.08em; color: var(--text-muted);
+  opacity: 0.6;
+}
+.severity-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.18rem 0.55rem; border-radius: 4px;
+}
+.sev-critical { background: rgba(255,95,87,0.15);  color: #FF5F57; border: 1px solid rgba(255,95,87,0.3); }
+.sev-high     { background: rgba(255,189,46,0.12); color: #FFBD2E; border: 1px solid rgba(255,189,46,0.3); }
+.sev-medium   { background: rgba(0,212,255,0.1);   color: #00D4FF; border: 1px solid rgba(0,212,255,0.25); }
+
 .writeup-tag {
   font-family: var(--font-mono);
   font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); opacity: 0.8;
 }
+
+/* Glitch title effect */
 .writeup-title {
   font-family: var(--font-display);
   font-size: 0.95rem; font-weight: 700; color: var(--text); line-height: 1.3;
+  position: relative; display: inline-block;
 }
+.writeup-card:hover .writeup-title { animation: glitch 0.4s ease; }
+@keyframes glitch {
+  0%   { transform: translate(0); }
+  15%  { transform: translate(-2px, 1px); clip-path: inset(20% 0 60% 0); color: #00D4FF; }
+  30%  { transform: translate(2px, -1px); clip-path: inset(60% 0 10% 0); color: #FF5F57; }
+  45%  { transform: translate(-1px, 0); clip-path: none; color: var(--text); }
+  60%  { transform: translate(1px, 1px); }
+  75%  { transform: translate(0); color: var(--text); }
+  100% { transform: translate(0); color: var(--text); clip-path: none; }
+}
+
 .writeup-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+
+/* Target indicator dots */
+.writeup-targets {
+  display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.1rem;
+}
+.target-dot {
+  font-family: var(--font-mono);
+  font-size: 0.58rem; padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-muted);
+}
+
 .writeup-btn {
   font-family: var(--font-mono);
   font-size: 0.68rem; font-weight: 600;
@@ -758,6 +829,7 @@ main { position: relative; z-index: 1; }
   padding: 0.4rem 0.85rem; border-radius: 6px;
   cursor: pointer; width: fit-content;
   transition: border-color 0.2s, background 0.2s;
+  position: relative; z-index: 2;
 }
 .writeup-btn:hover { border-color: var(--accent); background: var(--accent-dim); }
 
@@ -1163,17 +1235,49 @@ inputEl.focus();
 
 // ── Boot welcome message ─────────────────────────────────
 async function showWelcome() {
-  addLine('', 'tl-dim');
-  addLine('  ██╗  ██╗ █████╗ ██╗   ██╗██╗███╗  ██╗', 'tl-accent');
-  addLine('  ██║ ██╔╝██╔══██╗██║   ██║██║████╗ ██║', 'tl-accent');
-  addLine('  █████╔╝ ███████║╚██╗ ██╔╝██║██╔██╗██║', 'tl-accent');
-  addLine('  ██╔═██╗ ██╔══██║  ╚███╔╝ ██║██║╚████║', 'tl-accent');
-  addLine('  ██║  ██╗██║  ██║   ██╔╝  ██║██║ ╚███║', 'tl-accent');
-  addLine('  ╚═╝  ╚═╝╚═╝  ╚═╝  ╚══╝   ╚═╝╚═╝  ╚══╝', 'tl-accent');
-  addGap();
-  addLine('  Security Engineer @ Cycatz  |  Penetration Tester', 'tl-dim');
-  addLine('  CAP  |  CASA  |  UNESCO  |  Tata Motors', 'tl-dim');
-  addGap();
+  const isMobile = window.innerWidth < 600;
+
+  if (isMobile) {
+    // Mobile: animated letter-by-letter name reveal
+    addGap();
+    const nameEl = document.createElement('span');
+    nameEl.className = 'tl tl-accent';
+    nameEl.style.cssText = 'font-size:1.4rem;font-weight:900;letter-spacing:0.18em;display:block;text-align:center;';
+    outEl.appendChild(nameEl); scrollBot();
+    const name = 'KAVINKUMAR S';
+    for (let i = 0; i < name.length; i++) {
+      await wait(80);
+      nameEl.textContent += name[i];
+      scrollBot();
+    }
+    addGap();
+    const sub = document.createElement('span');
+    sub.className = 'tl';
+    sub.style.cssText = 'display:block;text-align:center;color:rgba(0,212,255,0.5);font-size:0.72rem;letter-spacing:0.1em;';
+    sub.textContent = '[ SECURITY ENGINEER @ CYCATZ ]';
+    outEl.appendChild(sub); scrollBot();
+    addGap();
+  } else {
+    // Desktop: glitch-style name with staggered line reveal
+    addLine('', 'tl-dim');
+    const asciiLines = [
+      '  ██╗  ██╗ █████╗ ██╗   ██╗██╗███╗  ██╗',
+      '  ██║ ██╔╝██╔══██╗██║   ██║██║████╗ ██║',
+      '  █████╔╝ ███████║╚██╗ ██╔╝██║██╔██╗██║',
+      '  ██╔═██╗ ██╔══██║  ╚███╔╝ ██║██║╚████║',
+      '  ██║  ██╗██║  ██║   ██╔╝  ██║██║ ╚███║',
+      '  ╚═╝  ╚═╝╚═╝  ╚═╝  ╚══╝   ╚═╝╚═╝  ╚══╝',
+    ];
+    for (const l of asciiLines) {
+      addLine(l, 'tl-accent');
+      await wait(55);
+    }
+    addGap();
+    addLine('  Security Engineer @ Cycatz  |  Penetration Tester', 'tl-dim');
+    addLine('  CAP  |  CASA  |  UNESCO  |  Tata Motors', 'tl-dim');
+    addGap();
+  }
+
   addLine('─────────────────────────────────────────────────────', 'tl-dim');
   addGap();
   addLine('Last login: ' + new Date().toDateString() + ' from 192.168.x.x via ssh', 'tl-dim');
@@ -1290,7 +1394,7 @@ inputEl.addEventListener('keydown', async (e) => {
   // echo the command
   echoCmd(raw);
 
-  if (cmd === './enumerate' || cmd === './enumerate' || cmd === 'enumerate') {
+  if (cmd === './enumerate' || cmd === 'enumerate') {
     await runResume();
     return;
   }
@@ -1536,7 +1640,7 @@ showWelcome();
         <span class="method-title">Reconnaissance &amp; Enumeration</span>
         <span class="method-toggle">+</span>
       </button>
-      <div class="method-body"><p>Gather OSINT, fingerprint technologies, andenumerate services, endpoints, and exposed interfaces.</p></div>
+      <div class="method-body"><p>Gather OSINT, fingerprint technologies, and enumerate services, endpoints, and exposed interfaces.</p></div>
     </li>
     <li class="method-item">
       <button class="method-header" onclick="toggleMethod(this)">
@@ -1589,42 +1693,103 @@ showWelcome();
     <p class="section-sub">Selected disclosures and research focused on measurable security improvements.</p>
   </div>
   <div class="writeups-grid">
+
     <div class="writeup-card observe">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-001</span>
+        <span class="severity-badge sev-high">HIGH</span>
+      </div>
       <div class="writeup-tag">Responsible Disclosure · Bug Bounty</div>
       <div class="writeup-title">Global Domain Service Provider</div>
-      <div class="writeup-desc">Responsible vulnerability disclosure with bounty acknowledgment. Identified account management and domain configuration flaws supporting unauthorized changes and domain hijacking.</div>
+      <div class="writeup-desc">Identified account management and domain configuration flaws supporting unauthorized changes and domain hijacking. Acknowledged with bounty.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Account Takeover</span>
+        <span class="target-dot">Domain Hijack</span>
+        <span class="target-dot">IDOR</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-domain')">View Details →</button>
     </div>
+
     <div class="writeup-card observe" style="transition-delay:0.06s">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-002</span>
+        <span class="severity-badge sev-high">HIGH</span>
+      </div>
       <div class="writeup-tag">Access Control · Authorization</div>
       <div class="writeup-title">Digital Book Platform</div>
-      <div class="writeup-desc">Security issues in digital content distribution. Identified authorization control weaknesses enabling unauthorized access to paid digital content.</div>
+      <div class="writeup-desc">Authorization control weaknesses enabling unauthorized access to paid digital content. Coordinated remediation strengthened entitlement logic.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Broken Auth</span>
+        <span class="target-dot">Access Control</span>
+        <span class="target-dot">BAC</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-books')">View Details →</button>
     </div>
+
     <div class="writeup-card observe" style="transition-delay:0.12s">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-003</span>
+        <span class="severity-badge sev-medium">MEDIUM</span>
+      </div>
       <div class="writeup-tag">Responsible Disclosure · Government</div>
       <div class="writeup-title">U.S. Government Labor Organization</div>
-      <div class="writeup-desc">Responsible disclosure leading to hardened public-facing services. Reported misconfigurations supporting phishing and information leakage scenarios.</div>
+      <div class="writeup-desc">Reported misconfigurations in public-facing infrastructure enabling phishing and information leakage. Organization implemented hardening fixes.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Misconfiguration</span>
+        <span class="target-dot">Info Leak</span>
+        <span class="target-dot">Phishing Risk</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-labor')">View Details →</button>
     </div>
+
     <div class="writeup-card observe" style="transition-delay:0.18s">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-004</span>
+        <span class="severity-badge sev-critical">CRITICAL</span>
+      </div>
       <div class="writeup-tag">Business Logic · Price Manipulation</div>
       <div class="writeup-title">Hacking the Fare</div>
-      <div class="writeup-desc">Business logic attack chain used to manipulate ticket pricing safely via fare calculation and discount validation flaws.</div>
+      <div class="writeup-desc">Chained fare calculation and discount validation flaws to manipulate ticket pricing. Demonstrated why business logic controls matter as much as code fixes.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Business Logic</span>
+        <span class="target-dot">Price Tamper</span>
+        <span class="target-dot">Parameter Manipulation</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-fare')">Read Overview →</button>
     </div>
+
     <div class="writeup-card observe" style="transition-delay:0.24s">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-005</span>
+        <span class="severity-badge sev-high">HIGH</span>
+      </div>
       <div class="writeup-tag">Responsible Disclosure · International Org</div>
       <div class="writeup-title">UNESCO</div>
-      <div class="writeup-desc">Identified and responsibly disclosed security vulnerabilities in UNESCO's public-facing infrastructure, receiving official acknowledgement from the organization.</div>
+      <div class="writeup-desc">Identified and responsibly disclosed security vulnerabilities in UNESCO's public-facing digital infrastructure. Received official acknowledgement.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Web Security</span>
+        <span class="target-dot">Disclosure</span>
+        <span class="target-dot">Acknowledged</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-unesco')">View Details →</button>
     </div>
+
     <div class="writeup-card observe" style="transition-delay:0.30s">
+      <div class="writeup-meta">
+        <span class="disc-id">DISC-2024-006</span>
+        <span class="severity-badge sev-high">HIGH</span>
+      </div>
       <div class="writeup-tag">Responsible Disclosure · Corporate</div>
       <div class="writeup-title">Tata Motors</div>
-      <div class="writeup-desc">Responsibly disclosed security vulnerabilities in Tata Motors' digital assets, contributing to the hardening of their web presence with official acknowledgement.</div>
+      <div class="writeup-desc">Responsibly disclosed vulnerabilities in Tata Motors' digital assets. Contributed to hardening of their web presence with official acknowledgement.</div>
+      <div class="writeup-targets">
+        <span class="target-dot">Corporate</span>
+        <span class="target-dot">Web Assets</span>
+        <span class="target-dot">Acknowledged</span>
+      </div>
       <button class="writeup-btn" onclick="openModal('modal-tata')">View Details →</button>
     </div>
+
   </div>
 </section>
 
