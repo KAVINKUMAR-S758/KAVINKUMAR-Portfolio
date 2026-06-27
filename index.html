@@ -1333,12 +1333,6 @@ const COMMANDS = {
   'clear': async () => {
     outEl.innerHTML = '';
   },
-  'ls': async () => {
-    addGap();
-    addLine('about.md   education.md   certifications.txt   writeups/', 'tl-dim');
-    addLine('tools.sh   contact.json   resume*', '');
-    addGap();
-  },
   'date': async () => {
     addLine(new Date().toString(), 'tl-dim');
   },
